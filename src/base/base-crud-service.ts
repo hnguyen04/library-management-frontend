@@ -34,7 +34,7 @@ export abstract class BaseCrudService {
 
   public async getAll<T>(
     query?: TGetAllQuery,
-    path = '/getAll',
+    path = '/GetAll',
   ): Promise<IPaginatedItems<T>> {
     if (query?.page !== undefined && query?.pageSize !== undefined) {
       query.skipCount = query.page * query.pageSize;
@@ -49,13 +49,12 @@ export abstract class BaseCrudService {
       url: `${this.basePath}${path}`,
       params: query,
     });
-
     return res.result ?? res;
   }
 
   public async getOne<T>(
     id: string | number,
-    path = '/get',
+    path = '/GetById',
   ): Promise<{ data: T }> {
     const res = await httpService.request<TBaseResponse<{ data: T }>>({
       method: 'GET',
@@ -89,7 +88,7 @@ export abstract class BaseCrudService {
     return res.result;
   }
 
-  public async create<T>(data: any, path = '/create') {
+  public async create<T>(data: any, path = '/Create') {
     const res = await httpService.request<TBaseResponse<T>>({
       method: 'POST',
       url: `${this.basePath}${path}`,
@@ -99,7 +98,7 @@ export abstract class BaseCrudService {
     return res.result;
   }
 
-  public async update<T>(data: any, path = '/update') {
+  public async update<T>(data: any, path = '/Update') {
     const res = await httpService.request<TBaseResponse<T>>({
       method: 'PUT',
       url: `${this.basePath}${path}`,
@@ -109,7 +108,7 @@ export abstract class BaseCrudService {
     return res.result;
   }
 
-  public async delete<T>(id: string | number, path = '/delete') {
+  public async delete<T>(id: string | number, path = '/Delete') {
     const res = await httpService.request<TBaseResponse<T>>({
       method: 'DELETE',
       url: `${this.basePath}${path}`,

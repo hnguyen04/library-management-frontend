@@ -1342,6 +1342,8 @@ export const initial = {
   'Quản lý tài khoản vip': '',
   'xác thực': '',
   'Người dùng': '',
+  'Cấu hình hệ thống': '',
+  'Danh sách người dùng': '',
 };
 
 type TObj = typeof initial;

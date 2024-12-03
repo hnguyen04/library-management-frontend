@@ -8,6 +8,7 @@ import MyAccountPage from '@/pages/admin/settings/my-account/index.page';
 import AuthLayout from '@/pages/auth/layout';
 import LoginPage from '@/pages/auth/login.page';
 import NotFoundPage from '@/pages/not-found.page';
+import SystemAccountsPage from '@/pages/admin/system/accounts/page';
 
 export const router = createBrowserRouter([
   {
@@ -27,6 +28,12 @@ export const router = createBrowserRouter([
           { path: 'overview', element: <ReportOverViewPage /> },
         ],
       },
+      {
+        path: '/system',
+        children: [
+          { path: 'accounts', element: <SystemAccountsPage /> },
+        ]
+      }
     ],
   },
   {

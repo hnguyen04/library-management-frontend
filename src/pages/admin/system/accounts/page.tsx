@@ -20,7 +20,13 @@ const SystemAccountsPage = () => {
     queryFn: () => accountsService.getAllRoles(),
     staleTime: Infinity,
   });
-  const allRoles = getallRolesRes?.items || [];
+
+  const roleOptions = useMemo(() => {
+    return getallRolesRes?.data?.map((item: any) => ({
+      label: item.name,
+      value: item.id,
+    }));
+  }, [getallRolesRes]);
 
   const columns: GridColDef[] = useMemo(
     () => [
@@ -28,26 +34,27 @@ const SystemAccountsPage = () => {
         headerName: t('ID'),
         field: 'id',
         type: 'number',
-        width: 100,
+        width: 300,
+        flex: 1,
         editable: false,
         renderCell: (params) => params.row.id,
       },
       {
-        field: 'userName',
+        field: 'name',
         headerName: t('accounts_userName'),
         width: 150,
         type: 'string',
         editable: false,
       },
       {
-        field: 'fullName',
+        field: 'userName',
         headerName: t('accounts_fullName'),
         type: 'string',
         editable: false,
         flex: 2,
       },
       {
-        field: 'emailAddress',
+        field: 'email',
         headerName: t('accounts_emailAddress'),
         width: 200,
         type: 'string',
@@ -55,44 +62,45 @@ const SystemAccountsPage = () => {
         flex: 3,
       },
       {
-        field: 'isActive',
-        headerName: t('accounts_isActive'),
-        type: 'boolean',
+        field: 'roleName',
+        headerName: t('Vai trò'),
+        width: 200,
+        type: 'string',
         editable: false,
-        flex: 1,
-      },
+      }
     ],
     [t],
   );
 
-  const basicCreateFields = useMemo<TCrudFormField[]>(
+  const createFields = useMemo<TCrudFormField[]>(
     () => [
       {
-        name: 'surname',
-        label: t('accounts_surname'),
-        type: 'text',
-        colSpan: 6,
-      },
-      {
         name: 'name',
-        label: t('accounts_name'),
-        type: 'text',
-        required: true,
-        colSpan: 6,
-      },
-      {
-        name: 'userName',
         label: t('accounts_userName'),
         type: 'text',
         required: true,
         colSpan: 6,
       },
       {
-        name: 'emailAddress',
+        name: 'email',
         label: t('accounts_emailAddress'),
         type: 'text',
         required: true,
         colSpan: 6,
+      },
+      {
+        name: 'userName',
+        label: t('accounts_fullName'),
+        type: 'text',
+        required: true,
+        colSpan: 9,
+      },
+      {
+        name: 'roleId',
+        label: t('Vai trò'),
+        type: 'select',
+        options: roleOptions,
+        colSpan: 3,
       },
       {
         name: 'password',
@@ -108,217 +116,120 @@ const SystemAccountsPage = () => {
         required: true,
         colSpan: 6,
       },
-      {
-        name: 'dateOfBirth',
-        label: t('accounts_dateOfBirth'),
-        type: 'date',
-        required: false,
-        colSpan: 6,
-      },
-      {
-        name: 'gender',
-        label: t('Giới tính'),
-        type: 'radio',
-        options: [
-          { label: t('Nam'), value: 'male' },
-          { label: t('Nữ'), value: 'female' },
-          { label: t('Khác'), value: 'other' },
-        ],
-        defaultValue: 'male',
-        colSpan: 6,
-      },
-      {
-        name: 'addressOfBirth',
-        label: t('accounts_addressOfBirth'),
-        type: 'text',
-        required: false,
-        colSpan: 12,
-      },
-      {
-        name: 'homeAddress',
-        label: t('Địa chỉ'),
-        type: 'text',
-        required: false,
-        colSpan: 12,
-      },
-      {
-        name: 'isActive',
-        label: t('Trạng thái'),
-        required: false,
-        type: 'radio',
-        options: [
-          { label: t('accounts_isActive'), value: true },
-          { label: t('accounts_isNotActive'), value: false },
-        ],
-        defaultValue: true,
-      },
+
     ],
-    [t],
+    [t, roleOptions],
   );
 
-  const basicUpdateFields = useMemo<TCrudFormField[]>(
+  const updateFields = useMemo<TCrudFormField[]>(
+    () => [
+
+      {
+        name: 'name',
+        label: t('accounts_userName'),
+        type: 'text',
+        required: true,
+        colSpan: 6,
+        readOnly: true,
+      },
+      {
+        name: 'userName',
+        label: t('accounts_fullName'),
+        type: 'text',
+        required: true,
+        colSpan: 6,
+      },
+      {
+        name: 'email',
+        label: t('accounts_emailAddress'),
+        type: 'text',
+        required: true,
+        colSpan: 6,
+      },
+      {
+        name: 'roleId',
+        readOnly: true,
+        label: t('Vai trò'),
+        type: 'select',
+        options: roleOptions,
+        required: false,
+        colSpan: 6,
+      },
+    ],
+    [t, roleOptions],
+  );
+
+  const viewFields = useMemo<TCrudFormField[]>(
     () => [
       {
         name: 'id',
-        type: 'number',
-        noRender: true,
-      },
-      {
-        name: 'surname',
-        label: t('accounts_surname'),
+        label: t('ID'),
         type: 'text',
         colSpan: 6,
       },
       {
         name: 'name',
-        label: t('accounts_name'),
-        type: 'text',
-        required: true,
-        colSpan: 6,
-      },
-      {
-        name: 'userName',
-        readOnly: true,
         label: t('accounts_userName'),
         type: 'text',
         required: true,
         colSpan: 6,
       },
       {
-        name: 'emailAddress',
+        name: 'userName',
+        label: t('accounts_fullName'),
+        type: 'text',
+        required: true,
+        colSpan: 6,
+      },
+      {
+        name: 'email',
         label: t('accounts_emailAddress'),
         type: 'text',
         required: true,
         colSpan: 6,
       },
       {
-        name: 'dateOfBirth',
-        label: t('accounts_dateOfBirth'),
-        type: 'date',
-        required: false,
+        name: 'roleName',
+        label: t('Vai trò'),
+        type: 'select',
+        options: roleOptions,
         colSpan: 6,
-      },
-      {
-        name: 'gender',
-        label: t('Giới tính'),
-        type: 'radio',
-        options: [
-          { label: t('Nam'), value: 'male' },
-          { label: t('Nữ'), value: 'female' },
-          { label: t('Khác'), value: 'other' },
-        ],
-        defaultValue: 'male',
-        colSpan: 6,
-      },
-      {
-        name: 'addressOfBirth',
-        label: t('accounts_addressOfBirth'),
-        type: 'text',
-        required: false,
-        colSpan: 12,
-      },
-      {
-        name: 'homeAddress',
-        label: t('Địa chỉ'),
-        type: 'text',
-        required: false,
-        colSpan: 12,
-      },
-      {
-        name: 'isActive',
-        label: t('Trạng thái'),
-        required: false,
-        type: 'radio',
-        options: [
-          { label: t('accounts_isActive'), value: true },
-          { label: t('accounts_isNotActive'), value: false },
-        ],
-        defaultValue: true,
       },
     ],
-    [t],
+    [t, roleOptions],
   );
 
-  const basicViewFields = useMemo<TCrudFormField[]>(
-    () => [
-      {
-        name: 'surname',
-        label: t('accounts_surname'),
-        type: 'text',
-        colSpan: 6,
-      },
-      {
-        name: 'name',
-        label: t('accounts_name'),
-        type: 'text',
-        required: true,
-        colSpan: 6,
-      },
-      {
-        name: 'userName',
-        label: t('accounts_userName'),
-        type: 'text',
-        required: true,
-        colSpan: 6,
-      },
-      {
-        name: 'emailAddress',
-        label: t('accounts_emailAddress'),
-        type: 'text',
-        required: true,
-        colSpan: 6,
-      },
-      {
-        name: 'dateOfBirth',
-        label: t('accounts_dateOfBirth'),
-        type: 'date',
-        required: false,
-        colSpan: 6,
-      },
-      {
-        name: 'gender',
-        label: 'Giới tính',
-        type: 'radio',
-        options: [
-          { label: t('Nam'), value: 'male' },
-          { label: t('Nữ'), value: 'female' },
-          { label: t('Khác'), value: 'other' },
-        ],
-        defaultValue: 'male',
-        colSpan: 6,
-      },
-      {
-        name: 'addressOfBirth',
-        label: t('accounts_addressOfBirth'),
-        type: 'text',
-        required: false,
-        colSpan: 12,
-      },
-      {
-        name: 'homeAddress',
-        label: t('Địa chỉ'),
-        type: 'text',
-        required: false,
-        colSpan: 12,
-      },
-      {
-        name: 'isActive',
-        label: t('Trạng thái'),
-        required: false,
-        type: 'radio',
-        options: [
-          { label: t('accounts_isActive'), value: true },
-          { label: t('accounts_isNotActive'), value: false },
-        ],
-      },
-    ],
-    [t],
-  );
+  const filterFields = useMemo<TCrudFormField[]>(() => [
+    {
+      name: 'name',
+      label: t('accounts_userName'),
+      type: 'text',
+      colSpan: 6,
+    },
+    {
+      name: 'userName',
+      label: t('accounts_fullName'),
+      type: 'text',
+      colSpan: 6,
+    },
+    {
+      name: 'email',
+      label: t('accounts_emailAddress'),
+      type: 'text',
+      colSpan: 6,
+    },
+    {
+      name: 'roleId',
+      label: t('Vai trò'),
+      type: 'select',
+      options: roleOptions,
+      colSpan: 6,
+    }
+  ], []);
 
   const createSchema = useMemo(
     () =>
       yup.object().shape({
-        surname: yup.string().required(t('field-required')),
         name: yup.string().required(t('field-required')),
         password: yup.string().required(t('field-required')),
         repassword: yup
@@ -326,27 +237,27 @@ const SystemAccountsPage = () => {
           .required(t('field-required'))
           .oneOf([yup.ref('password'), ''], t('Mật khẩu nhập lại không đúng')),
         userName: yup.string().required(t('field-required')),
-        emailAddress: yup
+        email: yup
           .string()
           .email(t('Email không hợp lệ'))
           .required(t('field-required'))
           .email(),
-        homeAddress: yup.string().nullable(),
-        addressOfBirth: yup.string().nullable(),
+        roleId: yup.number().required(t('field-required')),
       }),
     [t],
   );
   const updateSchema = useMemo(
     () =>
       yup.object().shape({
-        surname: yup.string().required(t('field-required')),
         name: yup.string().required(t('field-required')),
-        emailAddress: yup.string().required(t('field-required')),
-        homeAddress: yup.string().nullable(),
-        addressOfBirth: yup.string().nullable(),
+        userName: yup.string().required(t('field-required')),
+        email: yup.string().required(t('field-required')),
+        roleId: yup.number().required(t('field-required')),
       }),
     [t],
   );
+
+
 
   return (
     <BaseCrudPage
@@ -356,66 +267,12 @@ const SystemAccountsPage = () => {
       service={accountsService}
       columns={columns}
       hideSelectRowCheckbox
-      viewTabFields={[
-        { label: t('Thông tin'), fields: basicViewFields },
-        {
-          label: t('Phân quyền'),
-          fields: [
-            {
-              name: 'roleNames',
-              type: 'multiautocomplete',
-              colSpan: 12,
-              options: allRoles.map(
-                (p: { name: string; normalizedName: string }) => ({
-                  label: p.name,
-                  value: p.normalizedName,
-                }),
-              ),
-              readOnly: true,
-            },
-          ],
-        },
-      ]}
       beautyView
       beautyViewFormWidth="sm"
-      createTabFields={[
-        { label: t('Thông tin'), fields: basicCreateFields },
-        {
-          label: t('Phân quyền'),
-          fields: [
-            {
-              name: 'roleNames',
-              type: 'multiautocomplete',
-              colSpan: 12,
-              options: allRoles.map(
-                (p: { name: string; normalizedName: string }) => ({
-                  label: p.name,
-                  value: p.normalizedName,
-                }),
-              ),
-            },
-          ],
-        },
-      ]}
-      updateTabFields={[
-        { label: t('Thông tin'), fields: basicUpdateFields },
-        {
-          label: t('Phân quyền'),
-          fields: [
-            {
-              name: 'roleNames',
-              type: 'multiautocomplete',
-              colSpan: 12,
-              options: allRoles.map(
-                (p: { name: string; normalizedName: string }) => ({
-                  label: p.name,
-                  value: p.normalizedName,
-                }),
-              ),
-            },
-          ],
-        },
-      ]}
+      createFields={createFields}
+      updateFields={updateFields}
+      viewFields={viewFields}
+      filterFields={filterFields}
       createSchema={createSchema}
       updateSchema={updateSchema}
       formWidth="lg"
@@ -424,7 +281,7 @@ const SystemAccountsPage = () => {
       hideExportExcelBtn={true}
       hideImportExcelBtn={true}
       hasCustomActions={false}
-      hideSearchInput={false}
+      hideSearchInput={true}
       extendActions={[
         {
           icon: <RefreshTwoTone color="primary" />,

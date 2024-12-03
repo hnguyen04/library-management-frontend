@@ -80,6 +80,23 @@ const SideNav = (props: TSideNavProps) => {
           },
         ],
       },
+      {
+          title: t('Cấu hình hệ thống'),
+          basePath: '/system',
+          icon: <SettingsTwoTone />,
+          children: [
+            {
+              title: t('Danh sách người dùng'),
+              path: '/system/accounts',
+              permissions: [],
+            },
+            {
+              title: t('Danh sách người dùng'),
+              path: '/system/roles',
+              permissions: [],
+            },
+          ]
+      }
     ],
     [t],
   );

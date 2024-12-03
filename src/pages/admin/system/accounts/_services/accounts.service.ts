@@ -1,18 +1,19 @@
 import { BaseCrudService, TBaseResponse } from '@/base/base-crud-service';
+import { IPaginatedItems } from '@/base/base.model';
 import { httpService } from '@/base/http-service';
 
 interface IRole {
-  normalizedName: string;
-  displayName: string;
+  id: number;
   name: string;
+  permissions: any[];
 }
 class AccountsService extends BaseCrudService {
   constructor() {
-    super('/api/services/app/User');
+    super('/users');
   }
   public async resetPassword<T>(data: any, path = '/ResetPassword') {
     const res = await httpService.request<TBaseResponse<T>>({
-      method: 'POST',
+      method: 'PUT',
       url: `${this.basePath}${path}`,
       data,
     });
@@ -22,10 +23,10 @@ class AccountsService extends BaseCrudService {
 
   public async getAllRoles() {
     const response = await httpService.request<
-      TBaseResponse<{ items: IRole[] }>
+      TBaseResponse<IPaginatedItems<IRole>>
     >({
-      url: '/api/services/app/role/getall',
-      method: 'get',
+      url: '/roles/GetAll',
+      method: 'GET',
     });
     return response.result;
   }

@@ -381,4 +381,6 @@ export const en = {
   'Đã đối soát thủ công': '',
   'Ảnh minh chứng': 'Proof Images',
   'Người chuyển tiền': 'Remitter',
+  'Cấu hình hệ thống': 'System Configuration',
+  'Danh sách người dùng': 'User List',
 };

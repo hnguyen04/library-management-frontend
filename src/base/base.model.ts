@@ -6,8 +6,6 @@ export interface IBaseHttpResponse<T> {
   targetUrl?: string;
   success: boolean;
   error: any;
-  unAuthorizedRequest: boolean;
-  __abp: boolean;
   totalCount: number;
   totalRecords: number;
 }
@@ -39,4 +37,3 @@ export type TBaseCrudCol = GridColDef & {
   hide?: boolean;
 };
 
-export type TBaseFormMode = 'create' | 'edit' | 'view';
