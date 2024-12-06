@@ -1344,6 +1344,8 @@ export const initial = {
   'Người dùng': '',
   'Cấu hình hệ thống': '',
   'Danh sách người dùng': '',
+  'Quyền': '',
+  'permission': 'Quyền',
 };
 
 type TObj = typeof initial;

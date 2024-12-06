@@ -9,6 +9,7 @@ import AuthLayout from '@/pages/auth/layout';
 import LoginPage from '@/pages/auth/login.page';
 import NotFoundPage from '@/pages/not-found.page';
 import SystemAccountsPage from '@/pages/admin/system/accounts/page';
+import RolePage from '@/pages/admin/system/roles/page';
 
 export const router = createBrowserRouter([
   {
@@ -32,6 +33,7 @@ export const router = createBrowserRouter([
         path: '/system',
         children: [
           { path: 'accounts', element: <SystemAccountsPage /> },
+          { path: 'roles', element: <RolePage /> },
         ]
       }
     ],

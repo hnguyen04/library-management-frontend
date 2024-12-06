@@ -91,7 +91,7 @@ const SideNav = (props: TSideNavProps) => {
               permissions: [],
             },
             {
-              title: t('Danh sách người dùng'),
+              title: t('Vai trò'),
               path: '/system/roles',
               permissions: [],
             },
