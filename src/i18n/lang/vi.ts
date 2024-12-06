@@ -1325,7 +1325,7 @@ export const initial = {
   'Danh sách sản phẩm': '',
   'Danh sách voucher': '',
   'Tên sản phẩm': '',
-  Giảm: '',
+  'Giảm': '',
   'Giảm tối đa': '',
   'Đơn tối thiểu': '',
   'Đối soát': '',
@@ -1344,6 +1344,7 @@ export const initial = {
   'Người dùng': '',
   'Cấu hình hệ thống': '',
   'Danh sách người dùng': '',
+  'Danh sách nhà xuất bản': '',
 };
 
 type TObj = typeof initial;

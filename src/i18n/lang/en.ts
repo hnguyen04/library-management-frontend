@@ -383,4 +383,5 @@ export const en = {
   'Người chuyển tiền': 'Remitter',
   'Cấu hình hệ thống': 'System Configuration',
   'Danh sách người dùng': 'User List',
+  'Danh sách nhà xuất bản': 'Publisher List',
 };

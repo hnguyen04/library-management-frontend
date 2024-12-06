@@ -1,6 +1,7 @@
 import {
   HomeTwoTone as HomeIcon,
   MenuOpenTwoTone as OpenMenuIcon,
+  PublishRounded,
   SettingsTwoTone,
 } from '@mui/icons-material';
 import {
@@ -96,6 +97,12 @@ const SideNav = (props: TSideNavProps) => {
               permissions: [],
             },
           ]
+      },
+      {
+        title: t('Danh sách nhà xuất bản'),
+        path: '/publishers',
+        icon: <PublishRounded />,
+        permissions: [],
       }
     ],
     [t],
