@@ -9,7 +9,7 @@ import AuthLayout from '@/pages/auth/layout';
 import LoginPage from '@/pages/auth/login.page';
 import NotFoundPage from '@/pages/not-found.page';
 import SystemAccountsPage from '@/pages/admin/system/accounts/page';
-
+import PublishersPage from '@/pages/admin/publishers/page';
 export const router = createBrowserRouter([
   {
     path: '',
@@ -33,6 +33,10 @@ export const router = createBrowserRouter([
         children: [
           { path: 'accounts', element: <SystemAccountsPage /> },
         ]
+      },
+      {
+        path: '/publishers',
+        element: <PublishersPage />
       }
     ],
   },

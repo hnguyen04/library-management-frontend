@@ -1345,6 +1345,8 @@ export const initial = {
   'Cấu hình hệ thống': '',
   'Danh sách người dùng': '',
   'Danh sách nhà xuất bản': '',
+  'Nhà xuất bản': '',
+  'Tên nhà xuất bản': '',
 };
 
 type TObj = typeof initial;
