@@ -1347,6 +1347,7 @@ export const initial = {
   'Danh sách nhà xuất bản': '',
   'Nhà xuất bản': '',
   'Tên nhà xuất bản': '',
+  'Sửa tên nhà xuất bản': '',
 };
 
 type TObj = typeof initial;

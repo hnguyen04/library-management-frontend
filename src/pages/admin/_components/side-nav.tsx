@@ -1,7 +1,6 @@
 import {
-  HomeTwoTone as HomeIcon,
   MenuOpenTwoTone as OpenMenuIcon,
-  PublishRounded,
+  PublishedWithChangesRounded,
   SettingsTwoTone,
 } from '@mui/icons-material';
 import {
@@ -25,6 +24,7 @@ import useTranslation from '@/hooks/use-translation';
 import { AbpContext } from '@/services/abp/abp.context';
 
 import SideNavItem from './side-nav-item';
+import PublishersPage from '../publishers/page';
 
 type TSideNavItem = {
   title: string;
@@ -101,7 +101,7 @@ const SideNav = (props: TSideNavProps) => {
       {
         title: t('Danh sách nhà xuất bản'),
         path: '/publishers',
-        icon: <PublishRounded />,
+        icon: <PublishedWithChangesRounded />,
         permissions: [],
       }
     ],

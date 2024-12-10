@@ -3,7 +3,7 @@ import publishersService from './_services/publishers.services';
 import useTranslation from '@/hooks/use-translation';
 import { GridColDef } from '@mui/x-data-grid';
 import { useMemo } from 'react';
-import { TBaseCrudCol } from '@/base/base.model';
+import { TCrudFormField } from '@/base/crud-form-field.type';
 
 const PublishersPage = () => {
     const {t} = useTranslation();
@@ -14,6 +14,7 @@ const PublishersPage = () => {
             headerName: t('ID'),
             type: 'number',
             width: 150,
+            sortable: true,
         },
         {
             field: 'name',
@@ -23,7 +24,7 @@ const PublishersPage = () => {
         }
     ], [t]);
 
-    const createFields = useMemo<TBaseCrudCol[]>(() => [
+    const createFields = useMemo<TCrudFormField[]>(() => [
         {
             name: 'name',
             label: t('Tên nhà xuất bản'),
@@ -33,6 +34,41 @@ const PublishersPage = () => {
         },
     ], [t]);
 
+    const updateFields = useMemo<TCrudFormField[]>(
+        () => [
+            {
+                name: 'name',
+                label: t('Sửa tên nhà xuất bản'),
+                type: 'text',
+                required: true,
+                colspan: 6,
+            }
+          
+        ],
+        [t],
+      );
+    
+    
+      const viewFields = useMemo<TCrudFormField[]>(
+        () => [
+            {
+                name: 'id', 
+                label: t('ID'),
+                type: 'text',
+                colSpan: 6,
+            },
+            {
+                name: 'name',
+                label: t('Tên nhà xuất bản'),
+                type: 'text',
+                required: true,
+                colspan: 6,
+            }
+        ],
+        [t],
+      );
+
+    
     return (
         <>
             <BaseCrudPage
@@ -46,6 +82,8 @@ const PublishersPage = () => {
                 hideSearchInput
                 hideSelectRowCheckbox
                 createFields={createFields}
+                updateFields={updateFields}
+                viewFields={viewFields}
                 />
         </>
     );

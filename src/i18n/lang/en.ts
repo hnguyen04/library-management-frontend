@@ -386,4 +386,5 @@ export const en = {
   'Danh sách nhà xuất bản': 'Publisher List',
   'Nhà xuất bản': 'Publisher',
   'Tên nhà xuất bản': 'Publisher Name',
+  'Sửa tên nhà xuất bản': 'Edit Publisher Name',
 };
