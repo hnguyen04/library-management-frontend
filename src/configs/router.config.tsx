@@ -35,8 +35,11 @@ export const router = createBrowserRouter([
         children: [
           { path: 'accounts', element: <SystemAccountsPage /> },
           { path: 'roles', element: <RolePage /> },
-          { path: 'authors', element: <AuthorsPage />},
         ]
+      },
+      {
+        path: '/authors',
+        element: <AuthorsPage />,
       }
     ],
   },

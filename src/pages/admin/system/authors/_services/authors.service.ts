@@ -8,7 +8,6 @@ interface IRole {
   permissions: any[];
 }
 
-
 class AuthorsService extends BaseCrudService {
   constructor() {
     super('/authors');
@@ -16,7 +15,10 @@ class AuthorsService extends BaseCrudService {
   public async getAllAuthors() {
     const response = await httpService.request<TBaseResponse<IPaginatedItems<IRole>>>({
       url: "/authors/GetAll",
-      method: "GET"
+      method: "GET",
+      params: {
+        maxResultCount: 1000
+    }
     })
     return response.result;
   }

@@ -16,7 +16,7 @@ const AuthorsPage = () => {
   const { t } = useTranslation();
 
   const { data: getallAuthorsRes } = useQuery({
-    queryKey: ['system/authors/getAllAuthors'],
+    queryKey: ['authors/getAllAuthors'],
     queryFn: () => authorsService.getAllAuthors(),
     staleTime: Infinity,
   });
