@@ -384,4 +384,5 @@ export const en = {
   'Cấu hình hệ thống': 'System Configuration',
   'Danh sách người dùng': 'User List',
   'Quyền': 'Permission',
+  'Danh sách tác giả':'Author List'
 };
