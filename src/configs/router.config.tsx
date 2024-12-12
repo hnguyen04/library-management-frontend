@@ -12,6 +12,7 @@ import SystemAccountsPage from '@/pages/admin/system/accounts/page';
 import PublishersPage from '@/pages/admin/publishers/page';
 import RolePage from '@/pages/admin/system/roles/page';
 import AuthorsPage from '@/pages/admin/system/authors/page';
+import CategoriesPage from '@/pages/admin/category/page';
 
 export const router = createBrowserRouter([
   {
@@ -46,6 +47,10 @@ export const router = createBrowserRouter([
       {
         path: '/authors',
         element: <AuthorsPage />,
+      },
+      {
+        path: '/categories',
+        element: <CategoriesPage />,
       }
     ],
   },

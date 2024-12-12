@@ -99,16 +99,23 @@ const SideNav = (props: TSideNavProps) => {
           ]
       },
       {
+        icon: <PublishedWithChangesRounded />,
         title: t('Danh sách nhà xuất bản'),
         path: '/publishers',
-        permission: [],
+        permissions: [],
       },
       {
         icon: <PublishedWithChangesRounded />,
         title: t('Danh sách tác giả'),
         path: '/authors',
         permissions: [],
-      }
+      },
+      {
+        icon: <PublishedWithChangesRounded />,
+        title: t('Danh sách thể loại'),
+        path: '/categories',
+        permissions: [],
+      },
     ],
     [t],
   );
