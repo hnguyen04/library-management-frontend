@@ -1,6 +1,6 @@
 import {
-  HomeTwoTone as HomeIcon,
   MenuOpenTwoTone as OpenMenuIcon,
+  PublishedWithChangesRounded,
   SettingsTwoTone,
   BookTwoTone as BookIcon,
 } from '@mui/icons-material';
@@ -25,6 +25,7 @@ import useTranslation from '@/hooks/use-translation';
 import { AbpContext } from '@/services/abp/abp.context';
 
 import SideNavItem from './side-nav-item';
+import PublishersPage from '../publishers/page';
 
 type TSideNavItem = {
   title: string;
@@ -97,6 +98,17 @@ const SideNav = (props: TSideNavProps) => {
               permissions: [],
             },
           ]
+      },
+      {
+        title: t('Danh sách nhà xuất bản'),
+        path: '/publishers',
+        permission: [],
+      },
+      {
+        icon: <PublishedWithChangesRounded />,
+        title: t('Danh sách tác giả'),
+        path: '/authors',
+        permissions: [],
       },
       {
         title: t('Quản lý sách'),
