@@ -68,7 +68,7 @@ const AuthorsPage = () => {
     () => [
       {
         name: 'name',
-        label: t('authors_name'),
+        label: t('Tên tác giả'),
         type: 'text',
         required: true,
         colSpan: 6,
