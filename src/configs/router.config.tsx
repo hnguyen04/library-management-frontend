@@ -11,7 +11,7 @@ import NotFoundPage from '@/pages/not-found.page';
 import SystemAccountsPage from '@/pages/admin/system/accounts/page';
 import RolePage from '@/pages/admin/system/roles/page';
 import AuthorsPage from '@/pages/admin/system/authors/page';
-
+import CategoriesPage from '@/pages/admin/system/category/page';
 export const router = createBrowserRouter([
   {
     path: '',
@@ -36,6 +36,7 @@ export const router = createBrowserRouter([
           { path: 'accounts', element: <SystemAccountsPage /> },
           { path: 'roles', element: <RolePage /> },
           { path: 'authors', element: <AuthorsPage />},
+          { path: 'category', element: <CategoriesPage />},
         ]
       }
     ],
