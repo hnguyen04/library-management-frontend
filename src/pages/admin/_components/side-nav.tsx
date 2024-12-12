@@ -96,6 +96,11 @@ const SideNav = (props: TSideNavProps) => {
               permissions: [],
             },
           ]
+      },
+      {
+        title: t('Danh sách tác giả'),
+        path: '/authors',
+        permissions: [],
       }
     ],
     [t],
