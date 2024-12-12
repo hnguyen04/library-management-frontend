@@ -100,7 +100,7 @@ const SideNav = (props: TSideNavProps) => {
               title: t('Thể loại'),
               path: '/system/category',
               permissions: [],
-            },
+            }
           ]
       },
       {

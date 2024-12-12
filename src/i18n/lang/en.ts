@@ -388,5 +388,6 @@ export const en = {
   'Tên nhà xuất bản': 'Publisher Name',
   'Sửa tên nhà xuất bản': 'Edit Publisher Name',
   'Quyền': 'Permission',
-  'Danh sách tác giả':'Author List'
+  'Danh sách tác giả':'Author List',
+  'Thể loại': 'Category'
 };
