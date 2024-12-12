@@ -8,11 +8,11 @@ interface IRole {
   }
 class CategoryService extends BaseCrudService {
     constructor() {
-      super('/category');
+      super('/categories');
     }
     public async getAllCategories() {
       const response = await httpService.request<TBaseResponse<IPaginatedItems<IRole>>>({
-        url: "/category/GetAll",
+        url: "/categories/GetAll",
         method: "GET"
       })
       return response.result;
