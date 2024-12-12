@@ -7,6 +7,8 @@ interface IRole {
   name: string;
   permissions: any[];
 }
+
+
 class AccountsService extends BaseCrudService {
   constructor() {
     super('/users');
@@ -22,12 +24,10 @@ class AccountsService extends BaseCrudService {
   }
 
   public async getAllRoles() {
-    const response = await httpService.request<
-      TBaseResponse<IPaginatedItems<IRole>>
-    >({
-      url: '/roles/GetAll',
-      method: 'GET',
-    });
+    const response = await httpService.request<TBaseResponse<IPaginatedItems<IRole>>>({
+      url: "/roles/GetAll",
+      method: "GET"
+    })
     return response.result;
   }
 }

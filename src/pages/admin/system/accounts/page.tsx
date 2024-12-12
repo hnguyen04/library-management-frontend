@@ -225,7 +225,7 @@ const SystemAccountsPage = () => {
       options: roleOptions,
       colSpan: 6,
     }
-  ], []);
+  ], [roleOptions, t]);
 
   const createSchema = useMemo(
     () =>
@@ -282,6 +282,11 @@ const SystemAccountsPage = () => {
       hideImportExcelBtn={true}
       hasCustomActions={false}
       hideSearchInput={true}
+      defaultGetAllParams={
+        {
+          roleId: 1,
+        }
+      }
       extendActions={[
         {
           icon: <RefreshTwoTone color="primary" />,

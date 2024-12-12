@@ -92,7 +92,7 @@ const SideNav = (props: TSideNavProps) => {
               permissions: [],
             },
             {
-              title: t('Danh sách người dùng'),
+              title: t('Vai trò'),
               path: '/system/roles',
               permissions: [],
             },
@@ -101,7 +101,12 @@ const SideNav = (props: TSideNavProps) => {
       {
         title: t('Danh sách nhà xuất bản'),
         path: '/publishers',
+        permission: [],
+      },
+      {
         icon: <PublishedWithChangesRounded />,
+        title: t('Danh sách tác giả'),
+        path: '/authors',
         permissions: [],
       }
     ],

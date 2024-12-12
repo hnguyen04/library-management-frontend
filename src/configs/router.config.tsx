@@ -10,6 +10,9 @@ import LoginPage from '@/pages/auth/login.page';
 import NotFoundPage from '@/pages/not-found.page';
 import SystemAccountsPage from '@/pages/admin/system/accounts/page';
 import PublishersPage from '@/pages/admin/publishers/page';
+import RolePage from '@/pages/admin/system/roles/page';
+import AuthorsPage from '@/pages/admin/system/authors/page';
+
 export const router = createBrowserRouter([
   {
     path: '',
@@ -32,11 +35,17 @@ export const router = createBrowserRouter([
         path: '/system',
         children: [
           { path: 'accounts', element: <SystemAccountsPage /> },
+          { path: 'roles', element: <RolePage /> },
         ]
       },
       {
+
         path: '/publishers',
         element: <PublishersPage />
+      },
+      {
+        path: '/authors',
+        element: <AuthorsPage />,
       }
     ],
   },
