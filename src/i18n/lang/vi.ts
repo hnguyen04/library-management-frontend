@@ -1346,6 +1346,10 @@ export const initial = {
   'Danh sách người dùng': '',
   'Quyền': '',
   'permission': 'Quyền',
+  'Quản lý sách': '',
+  'Nhà xuất bản': '',
+  'Thể loại': '',
+  'Tác giả': '',
 };
 
 type TObj = typeof initial;

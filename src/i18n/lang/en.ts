@@ -384,4 +384,8 @@ export const en = {
   'Cấu hình hệ thống': 'System Configuration',
   'Danh sách người dùng': 'User List',
   'Quyền': 'Permission',
+  'Quản lý sách': 'Book Management',
+  'Nhà xuất bản': 'Publisher',
+  'Thể loại': 'Category',
+  'Tác giả': 'Author'
 };

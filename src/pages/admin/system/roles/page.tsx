@@ -12,10 +12,10 @@ const RolePage = () => {
 
     const { t } = useTranslation();
 
-    const { data: getAllPermissionsRes } = useQuery({
-        queryKey: ['system/roles/getAllPermissions'],
-        queryFn: () => rolesService.getAllPermissions(),
-    })
+    // const { data: getAllPermissionsRes } = useQuery({
+    //     queryKey: ['system/roles/getAllPermissions'],
+    //     queryFn: () => rolesService.getAllPermissions(),
+    // })
 
     // const permissionOptions = useMemo(() => getAllPermissionsRes?.data?.map((item: any) => ({
     //     label: item.name,
@@ -110,6 +110,7 @@ const RolePage = () => {
                 hideImportExcelBtn
                 hideExportExcelBtn
                 hideSearchInput
+                hideAddBtn
                 hideSelectRowCheckbox
                 beautyView
             />

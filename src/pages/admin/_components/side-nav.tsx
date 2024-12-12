@@ -2,6 +2,7 @@ import {
   HomeTwoTone as HomeIcon,
   MenuOpenTwoTone as OpenMenuIcon,
   SettingsTwoTone,
+  BookTwoTone as BookIcon,
 } from '@mui/icons-material';
 import {
   Box,
@@ -96,7 +97,13 @@ const SideNav = (props: TSideNavProps) => {
               permissions: [],
             },
           ]
-      }
+      },
+      {
+        title: t('Quản lý sách'),
+        path: '/books',
+        icon: <BookIcon />,
+        permissions: [],
+      },
     ],
     [t],
   );
