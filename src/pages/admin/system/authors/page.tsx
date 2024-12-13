@@ -1,5 +1,3 @@
-import NiceModal from '@ebay/nice-modal-react';
-import { RefreshTwoTone } from '@mui/icons-material';
 import { GridColDef } from '@mui/x-data-grid';
 import { useQuery } from '@tanstack/react-query';
 import { useMemo } from 'react';
@@ -9,7 +7,6 @@ import BaseCrudPage from '@/base/base-crud-page';
 import { TCrudFormField } from '@/base/crud-form-field.type';
 import useTranslation from '@/hooks/use-translation';
 
-//import ChangePassModal from './_components/change-pass-modal';
 import authorsService from './_services/authors.service';
 
 const AuthorsPage = () => {
@@ -53,43 +50,27 @@ const AuthorsPage = () => {
   const createFields = useMemo<TCrudFormField[]>(
     () => [
       {
-        name: "id",
-        label: t("ID"),
-        type: "number",
-        required: true,
-        colSpan: 6,
-      },
-      {
         name: 'name',
         label: t('authors_name'),
         type: 'text',
         required: true,
         colSpan: 6,
       },
-
     ],
-    [t, roleOptions],
+    [t],
   );
 
   const updateFields = useMemo<TCrudFormField[]>(
     () => [
       {
-        name: "id",
-        label: t("ID"),
-        type: "number",
-        required: true,
-        colSpan: 6,
-      },
-      {
         name: 'name',
         label: t('authors_name'),
         type: 'text',
         required: true,
         colSpan: 6,
-        readOnly: true,
       },
     ],
-    [t, roleOptions],
+    [t],
   );
 
   const viewFields = useMemo<TCrudFormField[]>(
@@ -126,8 +107,7 @@ const AuthorsPage = () => {
       type: 'text',
       colSpan: 6,
     },
-   
-  ], [roleOptions, t]);
+  ], [t]);
 
   const createSchema = useMemo(
     () =>
@@ -170,11 +150,6 @@ const AuthorsPage = () => {
       hideImportExcelBtn={true}
       hasCustomActions={false}
       hideSearchInput={true}
-      defaultGetAllParams={
-        {
-          roleId: 1,
-        }
-      }
     />
   );
 };

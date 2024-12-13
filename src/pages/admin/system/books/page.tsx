@@ -7,6 +7,7 @@ import useTranslation from '@/hooks/use-translation';
 import { useMemo } from "react";
 import { TCrudFormField } from "@/base/crud-form-field.type";
 import booksService from "./_services/books.service";
+import authorsService from "../authors/_services/authors.service";
 
 const BookPage = () => {
 
