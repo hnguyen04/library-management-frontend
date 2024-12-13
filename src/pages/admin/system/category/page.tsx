@@ -1,3 +1,5 @@
+import NiceModal from '@ebay/nice-modal-react';
+import { RefreshTwoTone } from '@mui/icons-material';
 import { GridColDef } from '@mui/x-data-grid';
 import { useQuery } from '@tanstack/react-query';
 import { useMemo } from 'react';
@@ -7,23 +9,24 @@ import BaseCrudPage from '@/base/base-crud-page';
 import { TCrudFormField } from '@/base/crud-form-field.type';
 import useTranslation from '@/hooks/use-translation';
 
-import authorsService from './_services/authors.service';
+//import ChangePassModal from './_components/change-pass-modal';
+import categoryService from './_services/category.service';
 
-const AuthorsPage = () => {
+const CategoriesPage = () => {
   const { t } = useTranslation();
 
-  const { data: getallAuthorsRes } = useQuery({
-    queryKey: ['authors/getAllAuthors'],
-    queryFn: () => authorsService.getAllAuthors(),
+  const { data: getallCategoriesRes } = useQuery({
+    queryKey: ['system/category/getAllCategories'],
+    queryFn: () => categoryService.getAllCategories(),
     staleTime: Infinity,
   });
 
   const roleOptions = useMemo(() => {
-    return getallAuthorsRes?.data?.map((item: any) => ({
+    return getallCategoriesRes?.data?.map((item: any) => ({
       label: item.name,
       value: item.id,
     }));
-  }, [getallAuthorsRes]);
+  }, [getallCategoriesRes]);
 
   const columns: GridColDef[] = useMemo(
     () => [
@@ -31,13 +34,13 @@ const AuthorsPage = () => {
         headerName: t('ID'),
         field: 'id',
         type: 'number',
-        width: 150,
+        width: 50,
         editable: false,
         renderCell: (params) => params.row.id,
       },
       {
         field: 'name',
-        headerName: t('Tên tác giả'),
+        headerName: t('categories_name'),
         width: 200,
         type: 'string',
         editable: false,
@@ -50,27 +53,43 @@ const AuthorsPage = () => {
   const createFields = useMemo<TCrudFormField[]>(
     () => [
       {
+        name: "id",
+        label: t("ID"),
+        type: "number",
+        required: true,
+        colSpan: 6,
+      },
+      {
         name: 'name',
-        label: t('Tên tác giả'),
+        label: t('categories_name'),
         type: 'text',
         required: true,
         colSpan: 6,
       },
+
     ],
-    [t],
+    [t, roleOptions],
   );
 
   const updateFields = useMemo<TCrudFormField[]>(
     () => [
       {
-        name: 'name',
-        label: t('Tên tác giả'),
-        type: 'text',
+        name: "id",
+        label: t("ID"),
+        type: "number",
         required: true,
         colSpan: 6,
       },
+      {
+        name: 'name',
+        label: t('categories_name'),
+        type: 'text',
+        required: true,
+        colSpan: 6,
+        readOnly: true,
+      },
     ],
-    [t],
+    [t, roleOptions],
   );
 
   const viewFields = useMemo<TCrudFormField[]>(
@@ -83,7 +102,7 @@ const AuthorsPage = () => {
       },
       {
         name: 'name',
-        label: t('Tên tác giả'),
+        label: t('categories_name'),
         type: 'text',
         required: true,
         colSpan: 6,
@@ -103,11 +122,12 @@ const AuthorsPage = () => {
     },
     {
       name: 'name',
-      label: t('Tên tác giả'),
+      label: t('categories_name'),
       type: 'text',
       colSpan: 6,
     },
-  ], [t]);
+
+  ], [roleOptions, t]);
 
   const createSchema = useMemo(
     () =>
@@ -129,10 +149,10 @@ const AuthorsPage = () => {
 
   return (
     <BaseCrudPage
-      title={t('Tác giả')}
-      name={t('Tác giả')}
-      unitName={t('Tác giả')}
-      service={authorsService}
+      title={t('Thể loại')}
+      name={t('Thể loại')}
+      unitName={t('Thể loại')}
+      service={categoryService}
       columns={columns}
       hideSelectRowCheckbox
       beautyView
@@ -150,7 +170,12 @@ const AuthorsPage = () => {
       hideImportExcelBtn={true}
       hasCustomActions={false}
       hideSearchInput={true}
+      defaultGetAllParams={
+        {
+          roleId: 1,
+        }
+      }
     />
   );
 };
-export default AuthorsPage;
+export default CategoriesPage;

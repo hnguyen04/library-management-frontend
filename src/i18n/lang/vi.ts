@@ -1352,9 +1352,13 @@ export const initial = {
   'permission': 'Quyền',
   'Danh sách tác giả': '',
   'Tác giả': '',
-  'authors_name': 'Tên tác giả',
-  'Quản lý sách': '',
+  'Tên tác giả': '',
+  'Tên thể loại':'',
   'Thể loại': '',
+  'Danh sách thể loại': '',
+  'authors_name': 'Tên tác giả',
+  'categories_name': 'Tên thể loại',
+  'Quản lý sách': '',
 };
 
 type TObj = typeof initial;
