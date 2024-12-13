@@ -1356,7 +1356,10 @@ export const initial = {
   'Tên thể loại':'',
   'Thể loại': '',
   'Danh sách thể loại': '',
-  
+  'authors_name': 'Tên tác giả',
+  'Danh sách thể loại': '',
+  'Thể loại': '',
+  'categories_name': 'Tên thể loại',
 };
 
 type TObj = typeof initial;

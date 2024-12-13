@@ -392,6 +392,4 @@ export const en = {
   'Tên thể loại': 'Category Name',
   'Thể loại': 'Category',
   'Danh sách thể loại': 'Category List',
-  
-
 };
