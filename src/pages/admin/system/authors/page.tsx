@@ -155,11 +155,6 @@ const AuthorsPage = () => {
       hideImportExcelBtn={true}
       hasCustomActions={false}
       hideSearchInput={true}
-      defaultGetAllParams={
-        {
-          roleId: 1,
-        }
-      }
     />
   );
 };
