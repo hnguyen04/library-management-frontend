@@ -33,7 +33,7 @@ const CategoriesPage = () => {
         headerName: t('ID'),
         field: 'id',
         type: 'number',
-        width: 50,
+        width: 150,
         editable: false,
         renderCell: (params) => params.row.id,
       },

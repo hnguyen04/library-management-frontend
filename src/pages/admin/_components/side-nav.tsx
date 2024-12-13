@@ -1,4 +1,5 @@
 import {
+  CategorySharp,
   MenuOpenTwoTone as OpenMenuIcon,
   PublishedWithChangesRounded,
   SettingsTwoTone,
@@ -111,7 +112,7 @@ const SideNav = (props: TSideNavProps) => {
         permissions: [],
       },
       {
-        icon: <PublishedWithChangesRounded />,
+        icon: <CategorySharp />,
         title: t('Danh sách thể loại'),
         path: '/categories',
         permissions: [],
