@@ -1,5 +1,4 @@
-import NiceModal from '@ebay/nice-modal-react';
-import { RefreshTwoTone } from '@mui/icons-material';
+
 import { GridColDef } from '@mui/x-data-grid';
 import { useQuery } from '@tanstack/react-query';
 import { useMemo } from 'react';
@@ -10,23 +9,23 @@ import { TCrudFormField } from '@/base/crud-form-field.type';
 import useTranslation from '@/hooks/use-translation';
 
 //import ChangePassModal from './_components/change-pass-modal';
-import authorsService from './_services/authors.service';
+import categoryService from './_services/category.services';
 
-const AuthorsPage = () => {
+const CategoriesPage = () => {
   const { t } = useTranslation();
 
-  const { data: getallAuthorsRes } = useQuery({
-    queryKey: ['authors/getAllAuthors'],
-    queryFn: () => authorsService.getAllAuthors(),
+  const { data: getallCategoriesRes } = useQuery({
+    queryKey: ['system/category/getAllCategories'],
+    queryFn: () => categoryService.getAllCategories(),
     staleTime: Infinity,
   });
 
   const roleOptions = useMemo(() => {
-    return getallAuthorsRes?.data?.map((item: any) => ({
+    return getallCategoriesRes?.data?.map((item: any) => ({
       label: item.name,
       value: item.id,
     }));
-  }, [getallAuthorsRes]);
+  }, [getallCategoriesRes]);
 
   const columns: GridColDef[] = useMemo(
     () => [
@@ -39,8 +38,8 @@ const AuthorsPage = () => {
         renderCell: (params) => params.row.id,
       },
       {
+        headerName: t('Tên thể loại'),
         field: 'name',
-        headerName: t('Tên tác giả'),
         width: 200,
         type: 'string',
         editable: false,
@@ -54,7 +53,7 @@ const AuthorsPage = () => {
     () => [
       {
         name: 'name',
-        label: t('Tên tác giả'),
+        label: t('Tên thể loại'),
         type: 'text',
         required: true,
         colSpan: 6,
@@ -68,7 +67,7 @@ const AuthorsPage = () => {
     () => [
       {
         name: 'name',
-        label: t('Tên tác giả'),
+        label: t('Tên thể loại'),
         type: 'text',
         required: true,
         colSpan: 6,
@@ -87,7 +86,7 @@ const AuthorsPage = () => {
       },
       {
         name: 'name',
-        label: t('Tên tác giả'),
+        label: t('Tên thể loại'),
         type: 'text',
         required: true,
         colSpan: 6,
@@ -107,11 +106,11 @@ const AuthorsPage = () => {
     },
     {
       name: 'name',
-      label: t('Tên tác giả'),
+      label: t('Tên thể loại'),
       type: 'text',
       colSpan: 6,
     },
-   
+
   ], [roleOptions, t]);
 
   const createSchema = useMemo(
@@ -134,10 +133,10 @@ const AuthorsPage = () => {
 
   return (
     <BaseCrudPage
-      title={t('Tác giả')}
-      name={t('Tác giả')}
-      unitName={t('Tác giả')}
-      service={authorsService}
+      title={t('Thể loại')}
+      name={t('Thể loại')}
+      unitName={t('Thể loại')}
+      service={categoryService}
       columns={columns}
       hideSelectRowCheckbox
       beautyView
@@ -158,4 +157,4 @@ const AuthorsPage = () => {
     />
   );
 };
-export default AuthorsPage;
+export default CategoriesPage;
