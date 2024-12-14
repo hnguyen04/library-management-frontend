@@ -391,5 +391,11 @@ export const en = {
   'Danh sách tác giả':'Author List',
   'Tên thể loại': 'Category Name',
   'Thể loại': 'Category',
+  'Quản lý bản ghi sách': 'Book Copies Management',
+  'Thêm bản ghi sách': 'Create Book Copies',
   'Danh sách thể loại': 'Category List',
+  'Vui lòng nhập số lượng': 'You must enter a quantity',
+  'Số lượng phải lớn hơn 0': 'Number must be greater than 0',
+  'Số lượng phải nhỏ hơn 10': 'Number must be less than 10',
+  'Vui lòng nhập ID': 'You must enter an ID',
 };

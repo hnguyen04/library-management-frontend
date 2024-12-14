@@ -85,3 +85,11 @@ export const getTotalPage = (total: number, limit: number) => {
   totalPage = Number.isNaN(Number(totalPage)) ? 0 : Number(totalPage);
   return totalPage === 0 ? 1 : totalPage;
 };
+
+
+export const getErrorMessage = (message: string, err: any) => {
+  let errormsg = message;
+  if (err?.response?.data?.error?.message)
+    errormsg = errormsg + ': ' + err?.response?.data?.error?.message;
+  return errormsg;
+};

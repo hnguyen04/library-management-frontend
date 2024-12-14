@@ -10,6 +10,7 @@ export interface IBaseHttpResponse<T> {
   totalRecords: number;
 }
 
+export type TBaseFormMode = 'create' | 'edit' | 'view';
 export interface IPaginatedItems<T> {
   items: T[];
   data: T[];

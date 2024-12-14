@@ -1358,7 +1358,13 @@ export const initial = {
   'Danh sách thể loại': '',
   'authors_name': 'Tên tác giả',
   'categories_name': 'Tên thể loại',
+  'Quản lý bản ghi sách': '',
   'Quản lý sách': '',
+  'Thêm bản ghi sách': '',
+  'Vui lòng nhập số lượng': '',
+  'Số lượng phải lớn hơn 0': '',
+  'Số lượng phải nhỏ hơn 10': '',
+  'Vui lòng nhập ID': '',
 };
 
 type TObj = typeof initial;

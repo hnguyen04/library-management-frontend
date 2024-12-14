@@ -116,7 +116,7 @@ const CategoriesPage = () => {
   const createSchema = useMemo(
     () =>
         yup.object().shape({
-            id: yup.number().required('Vui lòng nhập ID').min(1, 'ID phải lớn hơn 0'),
+            name: yup.string().required('Vui lòng nhập tên thể loại'),
         }),
     [t],
   );
@@ -124,7 +124,7 @@ const CategoriesPage = () => {
   const updateSchema = useMemo(
       () =>
           yup.object().shape({
-              id: yup.number().required('Vui lòng nhập ID').min(1, 'ID phải lớn hơn 0'),
+              name: yup.string().required('Vui lòng nhập tên thể loại'),
           }),
       [t],
   );

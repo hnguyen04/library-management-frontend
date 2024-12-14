@@ -11,10 +11,10 @@ import NotFoundPage from '@/pages/not-found.page';
 import SystemAccountsPage from '@/pages/admin/system/accounts/page';
 import PublishersPage from '@/pages/admin/publishers/page';
 import RolePage from '@/pages/admin/system/roles/page';
-import BookPage from '@/pages/admin/system/books/page';
-import AuthorsPage from '@/pages/admin/system/authors/page';
-
+import BookPage from '@/pages/admin/books/page';
+import AuthorsPage from '@/pages/admin/authors/page';
 import CategoriesPage from '@/pages/admin/category/page';
+import BookCopyPage from '@/pages/admin/books/[id]/page';
 
 export const router = createBrowserRouter([
   {
@@ -44,7 +44,6 @@ export const router = createBrowserRouter([
         ]
       },
       {
-
         path: '/publishers',
         element: <PublishersPage />
       },
@@ -59,6 +58,10 @@ export const router = createBrowserRouter([
       {
         path: '/books',
         element: <BookPage />,
+      },
+      {
+        path: '/books/:id',
+        element: <BookCopyPage />, 
       },
     ],
   },

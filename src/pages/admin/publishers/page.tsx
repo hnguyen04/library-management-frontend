@@ -6,7 +6,7 @@ import { useMemo } from 'react';
 import { TCrudFormField } from '@/base/crud-form-field.type';
 
 const PublishersPage = () => {
-    const {t} = useTranslation();
+    const { t } = useTranslation();
 
     const columns = useMemo<GridColDef[]>(() => [
         {
@@ -43,19 +43,20 @@ const PublishersPage = () => {
                 required: true,
                 colspan: 6,
             }
-          
+
         ],
         [t],
-      );
-    
-    
-      const viewFields = useMemo<TCrudFormField[]>(
+    );
+
+
+    const viewFields = useMemo<TCrudFormField[]>(
         () => [
             {
-                name: 'id', 
+                name: 'id',
                 label: t('ID'),
                 type: 'text',
                 colSpan: 6,
+                readOnly: true,
             },
             {
                 name: 'name',
@@ -63,19 +64,20 @@ const PublishersPage = () => {
                 type: 'text',
                 required: true,
                 colspan: 6,
+                readOnly: true,
             }
         ],
         [t],
-      );
+    );
 
-    
+
     return (
         <>
             <BaseCrudPage
-                title = {t('Nhà xuất bản')}
-                name = {t('Nhà xuất bản')}
-                unitName= {t('Nhà xuất bản')}
-                service = {publishersService}
+                title={t('Nhà xuất bản')}
+                name={t('Nhà xuất bản')}
+                unitName={t('Nhà xuất bản')}
+                service={publishersService}
                 columns={columns}
                 hideImportExcelBtn
                 hideExportExcelBtn
@@ -84,7 +86,8 @@ const PublishersPage = () => {
                 createFields={createFields}
                 updateFields={updateFields}
                 viewFields={viewFields}
-                />
+                beautyView
+            />
         </>
     );
 }
