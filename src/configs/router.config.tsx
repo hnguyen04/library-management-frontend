@@ -15,6 +15,8 @@ import BookPage from '@/pages/admin/books/page';
 import AuthorsPage from '@/pages/admin/authors/page';
 import CategoriesPage from '@/pages/admin/category/page';
 import BookCopyPage from '@/pages/admin/books/[id]/page';
+import SystemStaffsPage from '@/pages/admin/system/staffs/page';
+import ChangePasswordPage from '@/pages/admin/settings/change-password/index.page';
 
 export const router = createBrowserRouter([
   {
@@ -26,6 +28,7 @@ export const router = createBrowserRouter([
         path: '/settings',
         children: [
           { path: 'my-account', element: <MyAccountPage /> },
+          { path: 'change-password', element: <ChangePasswordPage />},
         ],
       },
       {
@@ -39,8 +42,7 @@ export const router = createBrowserRouter([
         children: [
           { path: 'accounts', element: <SystemAccountsPage /> },
           { path: 'roles', element: <RolePage /> },
-          { path: 'authors', element: <AuthorsPage />},
-          { path: 'category', element: <CategoriesPage />},
+          { path: 'staffs', element: <SystemStaffsPage /> },
         ]
       },
       {
@@ -61,7 +63,7 @@ export const router = createBrowserRouter([
       },
       {
         path: '/books/:id',
-        element: <BookCopyPage />, 
+        element: <BookCopyPage />,
       },
     ],
   },

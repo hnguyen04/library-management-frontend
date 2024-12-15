@@ -11,8 +11,7 @@ import PasswordField from '@/base/password-field';
 import useLoading from '@/hooks/use-loading';
 import useTranslation from '@/hooks/use-translation';
 
-import myAccountService from '../_services/my-account.service';
-
+import changePasswordService from '../_services/change-password.service';
 
 const SecurityForm = () => {
   const { t } = useTranslation();
@@ -46,7 +45,7 @@ const SecurityForm = () => {
 
   const updatePasswordMutation = useMutation({
     mutationFn: (data: any) =>
-      myAccountService.changePassword({
+      changePasswordService.changePassword({
         currentPassword: data.currentPassword,
         newPassword: data.newPassword,
       }),

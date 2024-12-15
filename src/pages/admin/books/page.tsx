@@ -2,6 +2,8 @@ import BaseCrudPage from "@/base/base-crud-page";
 import { GridColDef } from "@mui/x-data-grid";
 import * as yup from "yup";
 import { Typography } from "@mui/material";
+import ContentCopyIcon from '@mui/icons-material/ContentCopy';
+
 
 import useTranslation from '@/hooks/use-translation';
 import { useMemo } from "react";
@@ -11,6 +13,7 @@ import authorsService from "../authors/_services/authors.service";
 import categoryService from "../category/_services/category.service";
 import publishersService from "../publishers/_services/publishers.services";
 import { useQuery } from "@tanstack/react-query";
+
 
 const BookPage = () => {
 
@@ -34,12 +37,6 @@ const BookPage = () => {
         queryFn: () => categoryService.getAllCategories(),
         staleTime: Infinity,
     })
-
-    const { data: getAllBooksRes } = useQuery({
-        queryKey: ['books/getAllBooks'],
-        queryFn: () => booksService.getAll(),
-        staleTime: Infinity,
-    });
 
     const authorOptions = useMemo(() => {
         return getAllAuthorsRes?.data?.map((item: any) => ({
@@ -209,15 +206,6 @@ const BookPage = () => {
             required: true,
             options: categoryOptions,
             colSpan: 6,
-            formatValue: (_value) => {
-                return _value.map((item: any) => {
-                    console.log(item);
-                    return {
-                        label: item.name,
-                        value: item.id,
-                    }
-                });
-            },
         },
         {
             name: "description",
@@ -330,6 +318,7 @@ const BookPage = () => {
                 extendActions={[
                     {
                         title: t('Quản lý bản ghi sách'),
+                        icon: <ContentCopyIcon  />,
                         onClick: (_row ) => {
                             window.location.href = `/books/${_row?.row?.id}`;
                         }

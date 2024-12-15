@@ -1363,8 +1363,12 @@ export const initial = {
   'Thêm bản ghi sách': '',
   'Vui lòng nhập số lượng': '',
   'Số lượng phải lớn hơn 0': '',
-  'Số lượng phải nhỏ hơn 10': '',
+  'Số lượng phải nhỏ hơn hoặc bằng 10': '',
+  'Quản lý người đọc': '',
   'Vui lòng nhập ID': '',
+  'Danh sách nhân viên': '',
+  'Cập nhật lần cuối': '',
+  'Quản trị': '',
 };
 
 type TObj = typeof initial;

@@ -4,6 +4,8 @@ import {
   PublishedWithChangesRounded,
   SettingsTwoTone,
   BookTwoTone as BookIcon,
+  GroupTwoTone as GroupIcon,
+  Person2TwoTone as PersonIcon,
 } from '@mui/icons-material';
 import {
   Box,
@@ -26,7 +28,6 @@ import useTranslation from '@/hooks/use-translation';
 import { AbpContext } from '@/services/abp/abp.context';
 
 import SideNavItem from './side-nav-item';
-import PublishersPage from '../publishers/page';
 
 type TSideNavItem = {
   title: string;
@@ -72,7 +73,7 @@ const SideNav = (props: TSideNavProps) => {
   const items = useMemo<TSideNavItem[]>(
     () => [
       {
-        title: t('Cài đặt hệ thống'),
+        title: t('Cài đặt'),
         basePath: '/settings',
         icon: <SettingsTwoTone />,
         children: [
@@ -81,48 +82,59 @@ const SideNav = (props: TSideNavProps) => {
             path: '/settings/my-account',
             permissions: [],
           },
+          {
+            title: t('Đổi mật khẩu'),
+            path: '/settings/change-password',
+            permissions: [],
+          }
         ],
       },
       {
-          title: t('Cấu hình hệ thống'),
+          title: t('Quản trị'),
           basePath: '/system',
-          icon: <SettingsTwoTone />,
+          icon: <GroupIcon />,
+          permissions: [ALL_PERMISSIONS.User_GetAll],
           children: [
-            {
-              title: t('Danh sách người dùng'),
-              path: '/system/accounts',
-              permissions: [],
-            },
             {
               title: t('Vai trò'),
               path: '/system/roles',
-              permissions: [],
+              permissions: [ALL_PERMISSIONS.Role_GetAll],
             },
+            {
+              title: t('Danh sách người dùng'),
+              path: '/system/accounts',
+              permissions: [ALL_PERMISSIONS.User_GetAll],
+            },
+            {
+              title: t('Danh sách nhân viên'),
+              path: '/system/staffs',
+              permissions: [ALL_PERMISSIONS.Staff_GetAll],
+            }
           ]
       },
       {
         icon: <PublishedWithChangesRounded />,
         title: t('Danh sách nhà xuất bản'),
         path: '/publishers',
-        permissions: [],
+        permissions: [ALL_PERMISSIONS.Publisher_Admin],
       },
       {
-        icon: <PublishedWithChangesRounded />,
+        icon: <PersonIcon />,
         title: t('Danh sách tác giả'),
         path: '/authors',
-        permissions: [],
+        permissions: [ALL_PERMISSIONS.Author_Admin],
       },
       {
         icon: <CategorySharp />,
         title: t('Danh sách thể loại'),
         path: '/categories',
-        permissions: [],
+        permissions: [ALL_PERMISSIONS.Category_Admin],
       },
       {
         title: t('Quản lý sách'),
         path: '/books',
         icon: <BookIcon />,
-        permissions: [],
+        permissions: [ALL_PERMISSIONS.Book_Create],
       },
     ],
     [t],

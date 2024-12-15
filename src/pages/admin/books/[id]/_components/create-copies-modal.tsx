@@ -38,7 +38,7 @@ const CreateBookCopyModal = NiceModal.create((props: TCreateCopiesModal) => {
                 number: yup.number()
                     .required(t('Vui lòng nhập số lượng'))
                     .min(1, t('Số lượng phải lớn hơn 0'))
-                    .max(10, t('Số lượng phải nhỏ hơn 10')),
+                    .max(10, t('Số lượng phải nhỏ hơn hoặc bằng 10')),
                 id: yup.string().required(t('Vui lòng nhập ID')),
             }),
         [],
@@ -158,7 +158,7 @@ const CreateBookCopyModal = NiceModal.create((props: TCreateCopiesModal) => {
                 <Button
                     variant="text"
                     color="inherit"
-                    form={uid + 'OrderCancelForm'}
+                    form={uid + 'CopiesCancelForm'}
                     type="reset"
                     onClick={() => {
                         modal.hide();

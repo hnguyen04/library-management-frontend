@@ -10,6 +10,7 @@ import { TCrudFormField } from "@/base/crud-form-field.type";
 import bookCopiesService from "./_services/bookCopies.service";
 import { EBookCopyStatus } from "./_services/bookCopies.model";
 import CreateBookCopyModal from "./_components/create-copies-modal";
+import { formatDate } from "@/services/utils-date";
 
 
 const BookCopyPage = () => {
@@ -20,6 +21,7 @@ const BookCopyPage = () => {
         {
             field: "id",
             headerName: t("ID"),
+            align: "center",
             type: "number",
             width: 150,
         },
@@ -35,6 +37,20 @@ const BookCopyPage = () => {
             headerName: t("Trạng thái"),
             type: "text",
             width: 200,
+        },
+        {
+            field: "createdAt",
+            headerName: t("Ngày tạo"),
+            type: "text",
+            width: 200,
+            renderCell: (params) => formatDate(params.row.createdAt, 'DD/MM/YYYY HH:mm'),
+        },
+        {
+            field: "updatedAt",
+            headerName: t("Cập nhật lần cuối"),
+            type: "text",
+            width: 200,
+            renderCell: (params) => formatDate(params.row.updatedAt, 'DD/MM/YYYY HH:mm'),
         }
     ], [t]);
 
@@ -75,7 +91,7 @@ const BookCopyPage = () => {
                 value: status,
             })),
             colSpan: 6,
-        }
+        },
     ], [t]);
 
 

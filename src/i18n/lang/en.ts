@@ -396,6 +396,10 @@ export const en = {
   'Danh sách thể loại': 'Category List',
   'Vui lòng nhập số lượng': 'You must enter a quantity',
   'Số lượng phải lớn hơn 0': 'Number must be greater than 0',
-  'Số lượng phải nhỏ hơn 10': 'Number must be less than 10',
+  'Số lượng phải nhỏ hơn hoặc bằng 10': 'Number must be equal or less than 10',
+  'Quản lý người đọc': 'Reader Management',
   'Vui lòng nhập ID': 'You must enter an ID',
+  'Danh sách nhân viên': 'Staff List',
+  'Cập nhật lần cuối': 'Last updated',
+  'Quản trị': 'System Management',
 };

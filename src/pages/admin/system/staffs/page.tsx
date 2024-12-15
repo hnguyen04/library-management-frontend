@@ -12,7 +12,7 @@ import useTranslation from '@/hooks/use-translation';
 import ChangePassModal from './_components/change-pass-modal';
 import accountsService from './_services/accounts.service';
 
-const SystemAccountsPage = () => {
+const SystemStaffsPage = () => {
   const { t } = useTranslation();
 
   const { data: getallRolesRes } = useQuery({
@@ -100,7 +100,7 @@ const SystemAccountsPage = () => {
         label: t('Vai trò'),
         type: 'select',
         options: roleOptions,
-        defaultValue: 3,
+        defaultValue: 2,
         readOnly: true,
         colSpan: 3,
       },
@@ -154,7 +154,6 @@ const SystemAccountsPage = () => {
         label: t('Vai trò'),
         type: 'select',
         options: roleOptions,
-        defaultValue: 3,
         required: false,
         colSpan: 6,
       },
@@ -264,9 +263,9 @@ const SystemAccountsPage = () => {
 
   return (
     <BaseCrudPage
-      title={t('Quản lý người đọc')}
+      title={t('accounts')}
       name="accounts"
-      unitName=""
+      unitName={t('accounts')}
       service={accountsService}
       columns={columns}
       hideSelectRowCheckbox
@@ -287,7 +286,7 @@ const SystemAccountsPage = () => {
       hideSearchInput={true}
       defaultGetAllParams={
         {
-          roleId: 3,
+          roleId: 2,
         }
       }
       extendActions={[
@@ -306,4 +305,4 @@ const SystemAccountsPage = () => {
     />
   );
 };
-export default SystemAccountsPage;
+export default SystemStaffsPage;
