@@ -17,6 +17,8 @@ import CategoriesPage from '@/pages/admin/category/page';
 import BookCopyPage from '@/pages/admin/books/[id]/page';
 import SystemStaffsPage from '@/pages/admin/system/staffs/page';
 import ChangePasswordPage from '@/pages/admin/settings/change-password/index.page';
+import BookLoansPage from '@/pages/admin/bookLoans/page';
+import FinesPage from '@/pages/admin/fines/page';
 
 export const router = createBrowserRouter([
   {
@@ -65,6 +67,14 @@ export const router = createBrowserRouter([
         path: '/books/:id',
         element: <BookCopyPage />,
       },
+      {
+        path: '/bookLoans',
+        element: <BookLoansPage />,
+      },
+      {
+        path: '/fines',
+        element: <FinesPage/>,
+      }
     ],
   },
   {

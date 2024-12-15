@@ -3,12 +3,12 @@ import { BaseCrudService } from "@/base/base-crud-service";
 // import { httpService } from "@/base/http-service";
 
 
-class BooksService extends BaseCrudService {
+class FinesService extends BaseCrudService {
     constructor() {
-        super('/books');
+        super('/fines');
     }
 }
 
-const booksService = new BooksService();
+const finesService = new FinesService();
 
-export default booksService;
+export default finesService;

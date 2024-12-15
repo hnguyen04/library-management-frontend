@@ -75,7 +75,7 @@ const PublishersPage = () => {
         <>
             <BaseCrudPage
                 title={t('Nhà xuất bản')}
-                name={t('Nhà xuất bản')}
+                name='publishers'
                 unitName={t('Nhà xuất bản')}
                 service={publishersService}
                 columns={columns}

@@ -6,6 +6,8 @@ import {
   BookTwoTone as BookIcon,
   GroupTwoTone as GroupIcon,
   Person2TwoTone as PersonIcon,
+  ReceiptLongTwoTone as ReceiptIcon,
+  PaidTwoTone as PaidIcon,
 } from '@mui/icons-material';
 import {
   Box,
@@ -73,46 +75,6 @@ const SideNav = (props: TSideNavProps) => {
   const items = useMemo<TSideNavItem[]>(
     () => [
       {
-        title: t('Cài đặt'),
-        basePath: '/settings',
-        icon: <SettingsTwoTone />,
-        children: [
-          {
-            title: t('Tài khoản của tôi'),
-            path: '/settings/my-account',
-            permissions: [],
-          },
-          {
-            title: t('Đổi mật khẩu'),
-            path: '/settings/change-password',
-            permissions: [],
-          }
-        ],
-      },
-      {
-          title: t('Quản trị'),
-          basePath: '/system',
-          icon: <GroupIcon />,
-          permissions: [ALL_PERMISSIONS.User_GetAll],
-          children: [
-            {
-              title: t('Vai trò'),
-              path: '/system/roles',
-              permissions: [ALL_PERMISSIONS.Role_GetAll],
-            },
-            {
-              title: t('Danh sách người dùng'),
-              path: '/system/accounts',
-              permissions: [ALL_PERMISSIONS.User_GetAll],
-            },
-            {
-              title: t('Danh sách nhân viên'),
-              path: '/system/staffs',
-              permissions: [ALL_PERMISSIONS.Staff_GetAll],
-            }
-          ]
-      },
-      {
         icon: <PublishedWithChangesRounded />,
         title: t('Danh sách nhà xuất bản'),
         path: '/publishers',
@@ -135,6 +97,58 @@ const SideNav = (props: TSideNavProps) => {
         path: '/books',
         icon: <BookIcon />,
         permissions: [ALL_PERMISSIONS.Book_Create],
+      },
+      {
+        title: t('Quản lý mượn trả sách'),
+        path: '/bookLoans',
+        icon: <ReceiptIcon />,
+        permissions: [],
+      },
+      {
+        title: t('Quản lý phạt'),
+        path: '/fines',
+        icon: <PaidIcon />,
+        permissions: [],
+      },
+      {
+        title: t('Quản trị'),
+        basePath: '/system',
+        icon: <GroupIcon />,
+        permissions: [ALL_PERMISSIONS.User_GetAll],
+        children: [
+          {
+            title: t('Vai trò'),
+            path: '/system/roles',
+            permissions: [ALL_PERMISSIONS.Role_GetAll],
+          },
+          {
+            title: t('Danh sách người dùng'),
+            path: '/system/accounts',
+            permissions: [ALL_PERMISSIONS.User_GetAll],
+          },
+          {
+            title: t('Danh sách nhân viên'),
+            path: '/system/staffs',
+            permissions: [ALL_PERMISSIONS.Staff_GetAll],
+          }
+        ]
+      },
+      {
+        title: t('Cài đặt'),
+        basePath: '/settings',
+        icon: <SettingsTwoTone />,
+        children: [
+          {
+            title: t('Tài khoản của tôi'),
+            path: '/settings/my-account',
+            permissions: [],
+          },
+          {
+            title: t('Đổi mật khẩu'),
+            path: '/settings/change-password',
+            permissions: [],
+          }
+        ],
       },
     ],
     [t],

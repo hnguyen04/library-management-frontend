@@ -19,7 +19,6 @@ const BookPage = () => {
 
     const { t } = useTranslation();
 
-
     const { data: getAllAuthorsRes } = useQuery({
         queryKey: ['authors/getAllAuthors'],
         queryFn: () => authorsService.getAllAuthors(),
@@ -59,11 +58,6 @@ const BookPage = () => {
         }));
     }, []);
 
-
-
-    
-
-
     const columns = useMemo<GridColDef[]>(() => [
         {
             field: "id",
@@ -98,7 +92,7 @@ const BookPage = () => {
             type: "text",
             width: 150,
             renderCell: (params) => {
-                return params.row.authors.map((author: any) => author.name).join(', ');
+                return params.row.authors?.map((author: any) => author.name).join(', ');
             }
         },
         {
@@ -107,7 +101,7 @@ const BookPage = () => {
             type: "text",
             width: 150,
             renderCell: (params) => {
-                return params.row.categories.map((category: any) => category.name).join(', ');
+                return params.row.categories?.map((category: any) => category.name).join(', ');
             }
         },
         {
@@ -149,7 +143,7 @@ const BookPage = () => {
             required: true,
             options: authorOptions,
             colSpan: 6,
-
+            
         },
         {
             name: "categoryIds",
@@ -181,7 +175,6 @@ const BookPage = () => {
             type: "number",
             required: true,
             colSpan: 6,
-
         },
         {
             name: "publisherId",
@@ -272,6 +265,36 @@ const BookPage = () => {
         }
     ], [t, authorOptions, publisherOptions, categoryOptions]);
 
+    const filterFields = useMemo<TCrudFormField[]>(() => [
+        {
+            name: "title",
+            label: t("Tiêu đề"),
+            type: "text",
+            colSpan: 6,
+        },
+        {
+            name: "publisherId",
+            label: t("Nhà xuất bản"),
+            type: "select",
+            options: publisherOptions,
+            colSpan: 6,
+        },
+        {
+            name: "authorId",
+            label: t("Tác giả"),
+            type: "select",
+            options: authorOptions,
+            colSpan: 6,
+        },
+        {
+            name: "categoryId",
+            label: t("Thể loại"),
+            type: "select",
+            options: categoryOptions,
+            colSpan: 6,
+        },
+    ], [t, authorOptions, publisherOptions, categoryOptions]);
+
 
     const createSchema = useMemo(
         () =>
@@ -301,12 +324,13 @@ const BookPage = () => {
         <>
             <BaseCrudPage
                 title={t('Quản lý sách')}
-                name={t('Quản lý sách')}
+                name='books'
                 unitName=''
                 service={booksService}
                 columns={columns}
                 createFields={createFields}
                 updateFields={updateFields}
+                filterFields={filterFields}
                 createSchema={createSchema}
                 updateSchema={updateSchema}
                 viewFields={viewFields}

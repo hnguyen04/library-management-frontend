@@ -3,6 +3,7 @@ import { GridColDef } from "@mui/x-data-grid";
 import * as yup from "yup";
 import { useParams } from "react-router-dom";
 import NiceModal from "@ebay/nice-modal-react";
+import { useQueryClient } from "@tanstack/react-query";
 
 import useTranslation from '@/hooks/use-translation';
 import { useMemo } from "react";
@@ -15,15 +16,16 @@ import { formatDate } from "@/services/utils-date";
 
 const BookCopyPage = () => {
     const { id } = useParams<{ id: string }>();
+    const queryClient = useQueryClient();
 
     const { t } = useTranslation();
     const columns = useMemo<GridColDef[]>(() => [
         {
             field: "id",
             headerName: t("ID"),
-            align: "center",
-            type: "number",
+            type: "text",
             width: 150,
+            // renderCell: (params: any) => `${params.row.bookTitle}_${params.api.getRowIndexRelativeToVisibleRows(params.row.id) + 1}`,
         },
         {
             field: "bookTitle",
@@ -94,6 +96,19 @@ const BookCopyPage = () => {
         },
     ], [t]);
 
+    const filterFields = useMemo<TCrudFormField[]>(() => [
+        {
+            name: "status",
+            label: t("Trạng thái"),
+            type: "select",
+            options: Object.values(EBookCopyStatus).map(status => ({
+                label: status,
+                value: status,
+            })),
+            colSpan: 6,
+        },
+    ], []);
+
 
     const createSchema = useMemo(
         () =>
@@ -115,20 +130,21 @@ const BookCopyPage = () => {
         <>
             <BaseCrudPage
                 title={t('Quản lý bản ghi sách')}
-                name={t('Quản lý bản ghi sách')}
+                name='bookCopies'
                 unitName=''
                 service={bookCopiesService}
                 columns={columns}
                 updateFields={updateFields}
                 createSchema={createSchema}
                 updateSchema={updateSchema}
+                filterFields={filterFields}
                 viewFields={viewFields}
                 hideImportExcelBtn
                 hideExportExcelBtn
                 hideSearchInput
                 onClickAddBtn={() => NiceModal.show(CreateBookCopyModal, {
                     id: id,
-                    refetchData: () => (console.log(id))
+                    refetchData: () => queryClient.invalidateQueries(['bookCopies/getAll']),
                 })}
                 hideSelectRowCheckbox
                 beautyView

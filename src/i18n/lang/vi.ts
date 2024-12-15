@@ -1368,7 +1368,20 @@ export const initial = {
   'Vui lòng nhập ID': '',
   'Danh sách nhân viên': '',
   'Cập nhật lần cuối': '',
+  'Quản lý nhân viên': '',
+  'Quản lý mượn trả sách': '',
   'Quản trị': '',
+  'Quản lý mượn sách': '',
+  'Người mượn': '',
+  'Thời gian mượn': '',
+  'Thời gian trả thực tế': '',
+  'Thời gian hết hạn': '',
+  'Mượn sách': '',
+  'Thời gian hết hạn phải sau thời gian mượn': '',
+  'Đánh dấu không thể trả lại': '',
+  'Id bản ghi': '',
+  'Mã mượn': '',
+  'Quản lý phạt': '',
 };
 
 type TObj = typeof initial;

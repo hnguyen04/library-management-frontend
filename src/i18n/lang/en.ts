@@ -401,5 +401,15 @@ export const en = {
   'Vui lòng nhập ID': 'You must enter an ID',
   'Danh sách nhân viên': 'Staff List',
   'Cập nhật lần cuối': 'Last updated',
+  'Quản lý mượn trả sách': 'BookLoan Management',
   'Quản trị': 'System Management',
+  'Thời gian mượn': 'Borrowed Time',
+  'Thời gian hết hạn': 'Expired Time',
+  'Thời gian trả thực tế': 'Actual Return Time',
+  'Mượn sách': '',
+  'Đánh dấu không thể trả lại': 'Mark as non-returnable',
+  'Id bản ghi': 'Copy ID',
+  'Thời gian hết hạn phải sau thời gian mượn': 'Expired time must be after borrowed time',
+  'Mã mượn': 'Loan ID',
+  'Quản lý phạt': ''
 };

@@ -124,7 +124,7 @@ const AuthorsPage = () => {
   return (
     <BaseCrudPage
       title={t('Tác giả')}
-      name={t('Tác giả')}
+      name='authors'
       unitName={t('Tác giả')}
       service={authorsService}
       columns={columns}

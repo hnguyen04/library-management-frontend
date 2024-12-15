@@ -9,7 +9,7 @@ import { TCrudFormField } from '@/base/crud-form-field.type';
 import useTranslation from '@/hooks/use-translation';
 
 //import ChangePassModal from './_components/change-pass-modal';
-import categoryService from './_services/category.services';
+import categoryService from './_services/category.service';
 
 const CategoriesPage = () => {
   const { t } = useTranslation();
@@ -97,14 +97,6 @@ const CategoriesPage = () => {
 
   const filterFields = useMemo<TCrudFormField[]>(() => [
     {
-      name: "id",
-      label: t("ID"),
-      type: "number",
-      required: true,
-      colSpan: 6,
-      readOnly: true,
-    },
-    {
       name: 'name',
       label: t('Tên thể loại'),
       type: 'text',
@@ -134,7 +126,7 @@ const CategoriesPage = () => {
   return (
     <BaseCrudPage
       title={t('Thể loại')}
-      name={t('Thể loại')}
+      name='categories'
       unitName={t('Thể loại')}
       service={categoryService}
       columns={columns}
