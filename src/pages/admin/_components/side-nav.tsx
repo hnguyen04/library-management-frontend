@@ -8,6 +8,7 @@ import {
   Person2TwoTone as PersonIcon,
   ReceiptLongTwoTone as ReceiptIcon,
   PaidTwoTone as PaidIcon,
+  HandshakeTwoTone as RequestIcon,
 } from '@mui/icons-material';
 import {
   Box,
@@ -102,13 +103,37 @@ const SideNav = (props: TSideNavProps) => {
         title: t('Quản lý mượn trả sách'),
         path: '/bookLoans',
         icon: <ReceiptIcon />,
-        permissions: [],
+        permissions: [ALL_PERMISSIONS.BookLoan_Admin],
       },
       {
         title: t('Quản lý phạt'),
         path: '/fines',
         icon: <PaidIcon />,
-        permissions: [],
+        permissions: [ALL_PERMISSIONS.Fine_Admin],
+      },
+      {
+        title: t('Danh mục sách'),
+        path: '/client/books',
+        icon: <BookIcon />,
+        permissions: [ALL_PERMISSIONS.Book_Client],
+      },
+      {
+        title: t('Danh mục sách mượn'),
+        path: '/client/bookLoans',
+        icon: <ReceiptIcon />,
+        permissions: [ALL_PERMISSIONS.BookLoan_Client],
+      },
+      {
+        title: t('Danh sách yêu cầu đã tạo'),
+        path: '/client/bookRequests',
+        icon: <RequestIcon />,
+        permissions: [ALL_PERMISSIONS.BookRequest_Client],
+      },
+      {
+        title: t('Danh sách hình phạt'),
+        path: '/client/fines',
+        icon: <PaidIcon />,
+        permissions: [ALL_PERMISSIONS.Fine_Client]
       },
       {
         title: t('Quản trị'),

@@ -1382,6 +1382,21 @@ export const initial = {
   'Id bản ghi': '',
   'Mã mượn': '',
   'Quản lý phạt': '',
+  'Danh mục sách': '',
+  'Danh mục sách dạng bảng': '',
+  'Danh mục sách dạng lưới': '',
+  'Thời hạn mượn (ngày)': '',
+  'Vui lòng nhập ngày mượn': '',
+  'Vui lòng nhập số ngày mượn': '',
+  'Số ngày mượn phải lớn hơn 0': '',
+  'Yêu cầu trả': '',
+  'Danh mục sách mượn': '',
+  'Yêu cầu mượn': '',
+  'Đang mượn': '',
+  'Đã trả': '',
+  'Không thể trả': '',
+  'Danh sách hình phạt': '',
+  'Danh sách yêu cầu đã tạo': '',
 };
 
 type TObj = typeof initial;

@@ -19,6 +19,10 @@ import SystemStaffsPage from '@/pages/admin/system/staffs/page';
 import ChangePasswordPage from '@/pages/admin/settings/change-password/index.page';
 import BookLoansPage from '@/pages/admin/bookLoans/page';
 import FinesPage from '@/pages/admin/fines/page';
+import BookClientPage from '@/pages/admin/client/books/page';
+import BookLoansClientPage from '@/pages/admin/client/bookLoans/page';
+import FinesClientPage from '@/pages/admin/client/fines/page';
+import BookRequestsClientPage from '@/pages/admin/client/bookRequests/page';
 
 export const router = createBrowserRouter([
   {
@@ -74,6 +78,22 @@ export const router = createBrowserRouter([
       {
         path: '/fines',
         element: <FinesPage/>,
+      },
+      {
+        path: '/client/books',
+        element: <BookClientPage />,
+      },
+      {
+        path: '/client/bookLoans',
+        element: <BookLoansClientPage />,
+      },
+      {
+        path: '/client/fines',
+        element: <FinesClientPage />
+      },
+      {
+        path: '/client/bookRequests',
+        element: <BookRequestsClientPage />,
       }
     ],
   },

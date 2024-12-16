@@ -1,5 +1,6 @@
+import { Book } from "@mui/icons-material";
+
 export const ALL_PERMISSIONS = {
-  Pages_SmartSocial: 'Pages.SmartSocial',
 
   Staff_GetAll: 'Staff.GetAll',
   Staff_Create: 'Staff.Create',
@@ -21,13 +22,24 @@ export const ALL_PERMISSIONS = {
 
   Book_Create: 'Book.Create',
   Book_GetAll: 'Book.GetAll',
+  Book_Client: 'Book.Client',
 
   Publisher_Admin: 'Publisher.Admin',
   Category_Admin: 'Category.Admin',
   Author_Admin: 'Author.Admin',
 
+  BookLoan_Admin: 'BookLoan.Admin',
+  BookLoan_GetAll: 'BookLoan.GetAll',
+  BookLoan_Client: 'BookLoan.Client',
 
-  Data_Admin: 'Data.Admin',
+  BookRequest_Client: 'BookRequest.Client',
+
+  Fine_Admin: 'Fine.Admin',
+  Fine_GetAll: 'Fine.GetAll',
+  Fine_Client: 'Fine.Client',
+
+
+
 };
 
 export const PERMISSION_NAMES_VI = {

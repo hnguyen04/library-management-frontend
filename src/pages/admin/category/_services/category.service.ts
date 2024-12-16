@@ -13,6 +13,10 @@ class CategoryService extends BaseCrudService {
     public async getAllCategories() {
       const response = await httpService.request<TBaseResponse<IPaginatedItems<IRole>>>({
         url: "/categories/GetAll",
+        params: {
+          skipCount: 0,
+          maxResultCount: 1000,
+        },
         method: "GET"
       })
       return response.result;

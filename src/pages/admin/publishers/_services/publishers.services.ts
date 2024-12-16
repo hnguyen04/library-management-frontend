@@ -16,6 +16,9 @@ class PublishersService extends BaseCrudService {
       TBaseResponse<IPaginatedItems<IPublisher>>
     >({
       url: '/publishers/GetAll',
+      params: {
+        maxResultCount: 1000,
+      },
       method: 'GET',
     });
     return response.result;

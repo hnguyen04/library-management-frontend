@@ -1,5 +1,5 @@
 import prettyBytes from 'pretty-bytes';
-
+import SHA256 from 'crypto-js/sha256';
 import { TCrudFormField } from '@/base/crud-form-field.type';
 
 export const removeEmptyKeys = (obj: any) => {
@@ -93,6 +93,17 @@ export const getErrorMessage = (message: string, err: any) => {
     errormsg = errormsg + ': ' + err?.response?.data?.error?.message;
   return errormsg;
 };
+
+export const hashUUIDTo8Char = (uuid: string) => {
+  // Hash the UUID using SHA-256
+  const hash = SHA256(uuid).toString();
+    
+  // Take the first 8 characters of the hash
+  const hash8Char = hash.substring(0, 8);
+  
+  return hash8Char;
+
+}
 
 
 
