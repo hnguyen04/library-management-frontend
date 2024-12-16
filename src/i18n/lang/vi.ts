@@ -1382,6 +1382,11 @@ export const initial = {
   'Id bản ghi': '',
   'Mã mượn': '',
   'Quản lý phạt': '',
+  'Yêu cầu mượn': '',
+  'Đang mượn': '',
+  'Yêu cầu trả': '',
+  'Đã trả': '',
+  'Không thể trả': '',
 };
 
 type TObj = typeof initial;
