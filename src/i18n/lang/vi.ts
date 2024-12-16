@@ -1397,6 +1397,7 @@ export const initial = {
   'Không thể trả': '',
   'Danh sách hình phạt': '',
   'Danh sách yêu cầu đã tạo': '',
+  
 };
 
 type TObj = typeof initial;
