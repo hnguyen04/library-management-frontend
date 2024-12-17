@@ -89,7 +89,7 @@ const LoginPage = () => {
           left: 0,
           right: 0,
           bottom: 0,
-          backgroundImage: `url('https://images.pexels.com/photos/4186017/pexels-photo-4186017.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')`,
+          backgroundImage: `url('https://i.imgur.com/0pL1DHx.png')`,
           backgroundRepeat: 'no-repeat',
           backgroundSize: 'cover',
           backgroundPosition: 'bottom',

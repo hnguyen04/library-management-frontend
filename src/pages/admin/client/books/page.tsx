@@ -145,30 +145,30 @@ const BookClientPage = () => {
             colSpan: 6,
             options: publisherOptions,
         },
-        {
-            name: "authorIds",
-            label: t("Tác giả"),
-            type: "multiautocomplete",
-            required: true,
-            options: authorOptions,
-            colSpan: 6,
-        },
-        {
-            name: "categories",
-            label: t("Thể loại"),
-            type: "multiautocomplete",
-            required: true,
-            options: categoryOptions,
-            colSpan: 6,
-            formatValue: (_value) => {
-                return _value.map((item: any) => {
-                    return {
-                        label: item.name,
-                        value: item.id,
-                    }
-                });
-            },
-        },
+        // {
+        //     name: "authorIds",
+        //     label: t("Tác giả"),
+        //     type: "multiautocomplete",
+        //     required: true,
+        //     options: authorOptions,
+        //     colSpan: 6,
+        // },
+        // {
+        //     name: "categories",
+        //     label: t("Thể loại"),
+        //     type: "multiautocomplete",
+        //     required: true,
+        //     options: categoryOptions,
+        //     colSpan: 6,
+        //     formatValue: (_value) => {
+        //         return _value.map((item: any) => {
+        //             return {
+        //                 label: item.name,
+        //                 value: item.id,
+        //             }
+        //         });
+        //     },
+        // },
         {
             name: "description",
             label: t("Mô tả"),

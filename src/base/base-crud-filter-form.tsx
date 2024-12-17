@@ -9,7 +9,7 @@ import {
 import { Popover } from '@mui/material';
 import { useForm } from 'react-hook-form';
 
-import { RhfDevTool } from '@/components/custom-rhf-devtool';
+// import { RhfDevTool } from '@/components/custom-rhf-devtool';
 import LocalizationProvider from '@/components/theme-registry/localization-provider';
 import useTranslation from '@/hooks/use-translation';
 import { resetFields } from '@/services/utils';
@@ -110,7 +110,7 @@ const BaseCrudFilterPopover = (props: TBaseCrudFilterPopoverProps) => {
             </Stack>
           </Box>
 
-          <RhfDevTool control={control} />
+          {/* <RhfDevTool control={control} /> */}
         </Box>
       </LocalizationProvider>
     </Popover>

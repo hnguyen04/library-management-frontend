@@ -71,7 +71,7 @@ const AccountPopover = (props: TAccountPopover) => {
         >
           <Typography variant="overline">{t('Tài khoản')}</Typography>
           <Typography color="text.secondary" variant="body2">
-            {authState.currentUser?.fullName}
+            {authState.currentUser?.userName}
           </Typography>
           <AccountCircleIcon />
         </MenuItemStyled>

@@ -67,6 +67,17 @@ class BookLoansService extends BaseCrudService {
         })
         return response.result;
     }
+    public async getAllClientBooksLoans(userId: string) {
+        const response = await httpService.request<TBaseResponse<IPaginatedItems<any>>>({
+            url: `/book-loans/GetAll?userId=${userId}`,
+            params: {
+                skipCount: 0,
+                maxResultCount: 1000,
+            },
+            method: "GET"
+        })
+        return response.result;
+    }
 }
 
 const bookLoansService = new BookLoansService();

@@ -4,7 +4,7 @@ import Grid from '@mui/material/Unstable_Grid2/Grid2';
 import { useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 
-import { RhfDevTool } from '@/components/custom-rhf-devtool';
+// import { RhfDevTool } from '@/components/custom-rhf-devtool';
 
 import BaseBeautyViewField from './base-beauty-view-field';
 import BaseFormInput from './base-form-input';
@@ -82,7 +82,7 @@ const BaseCrudFormContainer = (props: TBaseCrudFormContainerProps) => {
         </TabContext>
       )}
 
-      <RhfDevTool control={control} />
+      {/* <RhfDevTool control={control} /> */}
     </>
   );
 };

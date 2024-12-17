@@ -12,7 +12,7 @@ import { useCallback, useEffect, useMemo, useRef } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { useUpdateEffect } from 'react-use';
 
-import { RhfDevTool } from '@/components/custom-rhf-devtool';
+// import { RhfDevTool } from '@/components/custom-rhf-devtool';
 import DialogExtend from '@/components/dialog-extend';
 import useTranslation from '@/hooks/use-translation';
 import appService from '@/services/app/app.service';
@@ -83,7 +83,7 @@ const BaseCrudFormModal = (props: TBaseCrudFormModalProps) => {
     mode: 'onChange',
     resolver: schema ? yupResolver(schema) : undefined,
   });
-  const { handleSubmit, control, reset, setValue, formState } = form;
+  const { handleSubmit, reset, setValue, formState } = form;
 
   const createOrUpdateMutation = useMutation({
     mutationFn: (data: any) => {
@@ -183,7 +183,7 @@ const BaseCrudFormModal = (props: TBaseCrudFormModalProps) => {
           </form>
         </FormProvider>
 
-        <RhfDevTool control={control} />
+        {/* <RhfDevTool control={control} /> */}
       </DialogContent>
 
       <DialogActions

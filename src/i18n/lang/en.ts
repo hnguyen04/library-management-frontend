@@ -471,4 +471,5 @@ export const en = {
   'Thống kê mượn sách': 'Loaned Book Statistics',
   'Tổng số yêu cầu': 'Total Requests',
   'Tổng số sách mượn trả': 'Total Borrowed Books',
+  'Thống kê yêu cầu': 'Request Statistics',
 };

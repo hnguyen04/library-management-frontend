@@ -1427,6 +1427,7 @@ export const initial = {
   'Thống kê mượn sách': '',
   'Tổng số yêu cầu': '',
   'Tổng số sách mượn trả': '',
+  'Thống kê yêu cầu': '',
 };
 
 type TObj = typeof initial;
