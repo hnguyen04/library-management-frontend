@@ -2,6 +2,8 @@ import { Grid, Paper, Typography, Avatar } from "@mui/material";
 import { blue, green, red } from '@mui/material/colors';
 import { styled } from '@mui/material/styles';
 import { useQuery } from "@tanstack/react-query";
+import { useEffect } from "react";
+
 import {
     CheckBox as AcceptedIcon,
     ThumbDown as DeniedIcon,
@@ -13,6 +15,7 @@ import {
 
 import useTranslation from "@/hooks/use-translation";
 import bookRequestsService from "@/pages/admin/client/bookRequests/_services/bookRequests.service";
+import appService from "@/services/app/app.service";
 import useAuth from "@/hooks/use-auth";
 import { EBookRequestStatus } from "@/pages/admin/client/bookRequests/_services/bookRequest.model";
 
@@ -28,11 +31,18 @@ export default function BookRequestStatistics() {
     const { t } = useTranslation();
     const authQuery = useAuth();
 
-    const { data: getAllBookRequestsRes } = useQuery({
+    const { data: getAllBookRequestsRes, isLoading } = useQuery({
         queryKey: ['admin/bookRequests/getAllBookRequests'],
         queryFn: () => bookRequestsService.getAllClientBooksRequests(authQuery?.data?.id as string),
+        onSettled: () => appService.hideLoadingModal(),
         staleTime: Infinity,
     });
+
+    useEffect(() => {
+        if (isLoading) {
+            appService.showLoadingModal();
+        }
+    }, [isLoading]);
 
     return (
         <>

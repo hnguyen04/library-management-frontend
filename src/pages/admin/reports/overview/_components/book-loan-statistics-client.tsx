@@ -2,7 +2,8 @@ import { Grid, Paper, Typography, Avatar } from "@mui/material";
 import { blue, green, orange, purple, red, brown, cyan } from '@mui/material/colors';
 import { styled } from '@mui/material/styles';
 import { useQuery } from "@tanstack/react-query";
-import useAuth from "@/hooks/use-auth";
+import { useEffect, useMemo } from "react";
+
 import { 
     CheckBox as BorrowIcon,
     Handshake as ReturnIcon,
@@ -15,11 +16,12 @@ import {
 
 } from "@mui/icons-material";
 
+import useAuth from "@/hooks/use-auth";
 
 import useTranslation from "@/hooks/use-translation";
 import bookLoansService from "@/pages/admin/bookLoans/_services/bookLoans.service";
+import appService from "@/services/app/app.service";
 import { EBookLoanStatus } from "@/pages/admin/bookLoans/_services/bookLoans.model";
-import { useMemo } from "react";
 
 const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#000' : '#fff',
@@ -36,11 +38,18 @@ export default function BookLoanClientStatistics() {
     const id = useMemo(() => authQuery?.data?.id, [authQuery?.data?.id]);
     console.log(id);
 
-    const { data: getAllBookLoansRes } = useQuery({
-        queryKey: ['admin/bookLoans/getAllClientBookLoans'],
+    const { data: getAllBookLoansRes, isLoading } = useQuery({
+        queryKey: ['admin/bookLoans/getAllClientBookLoans', id],
         queryFn: () => bookLoansService.getAllClientBooksLoans(id as string),
+        onSettled: () => appService.hideLoadingModal(),
         staleTime: Infinity,
-    })
+    });
+
+    useEffect(() => {
+        if (isLoading) {
+            appService.showLoadingModal();
+        }
+    }, [isLoading]);
 
     return (
         <>

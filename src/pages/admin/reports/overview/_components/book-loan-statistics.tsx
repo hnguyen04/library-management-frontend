@@ -17,7 +17,9 @@ import {
 
 import useTranslation from "@/hooks/use-translation";
 import bookLoansService from "@/pages/admin/bookLoans/_services/bookLoans.service";
+import appService from "@/services/app/app.service";
 import { EBookLoanStatus } from "@/pages/admin/bookLoans/_services/bookLoans.model";
+import { useEffect } from "react";
 
 const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#000' : '#fff',
@@ -30,11 +32,19 @@ export default function BookLoanStatistics() {
 
     const { t } = useTranslation();
 
-    const { data: getAllBookLoansRes } = useQuery({
+    const { data: getAllBookLoansRes, isLoading } = useQuery({
         queryKey: ['admin/bookLoans/getAllBookLoans'],
         queryFn: () => bookLoansService.getAllBooksLoans(),
+        onSettled: () => appService.hideLoadingModal(),
         staleTime: Infinity,
     })
+
+    useEffect(() => {
+        if (isLoading) {
+            appService.showLoadingModal();
+        }
+    }, [isLoading]);
+
 
     return (
         <>

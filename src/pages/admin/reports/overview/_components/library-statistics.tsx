@@ -2,6 +2,8 @@ import { Grid, Paper, Typography, Avatar } from "@mui/material";
 import { blue, grey, pink, teal } from '@mui/material/colors';
 import { styled } from '@mui/material/styles';
 import { useQuery } from "@tanstack/react-query";
+import { useEffect } from "react";
+
 import {
     MenuBook as BookIcon,
     ContentCopy as CopyIcon,
@@ -16,6 +18,7 @@ import booksService from "@/pages/admin/books/_services/books.service";
 import categoryService from "@/pages/admin/category/_services/category.service";
 import authorsService from "@/pages/admin/authors/_services/authors.service";
 import publishersService from "@/pages/admin/publishers/_services/publishers.services";
+import appService from "@/services/app/app.service";
 
 const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#000' : '#fff',
@@ -27,26 +30,32 @@ const Item = styled(Paper)(({ theme }) => ({
 export default function LibraryStatistics() {
 
     const { t } = useTranslation();
-    const { data: getAllBooksRes } = useQuery({
+    const { data: getAllBooksRes, isLoading: isBookLoading } = useQuery({
         queryKey: ['admin/books/getAllBooks'],
         queryFn: () => booksService.getAllBooks(),
         staleTime: Infinity,
     });
-    const { data: getAllCategoriesRes } = useQuery({
+    const { data: getAllCategoriesRes, isLoading: isCategoriesLoading } = useQuery({
         queryKey: ['admin/category/getAllCategories'],
         queryFn: () => categoryService.getAllCategories(),
         staleTime: Infinity,
     })
-    const { data: getAllAuthorsRes } = useQuery({
+    const { data: getAllAuthorsRes, isLoading: isAuthorsLoading } = useQuery({
         queryKey: ['admin/authors/getAllAuthors'],
         queryFn: () => authorsService.getAllAuthors(),
         staleTime: Infinity,
     })
-    const { data: getAllPublishersRes } = useQuery({
+    const { data: getAllPublishersRes, isLoading: isPublishersLoading } = useQuery({
         queryKey: ['admin/publishers/getAllPublishers'],
         queryFn: () => publishersService.getAllPublishers(),
         staleTime: Infinity,
     })
+
+    useEffect(() => {
+        if (isBookLoading || isCategoriesLoading || isAuthorsLoading || isPublishersLoading) {
+            appService.showLoadingModal();
+        }
+    }, [isBookLoading, isCategoriesLoading, isAuthorsLoading, isPublishersLoading]);
 
 
     return (
