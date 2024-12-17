@@ -10,6 +10,8 @@ import { hashUUIDTo8Char } from '@/services/utils';
 import useAuth from '@/hooks/use-auth';
 import bookRequestsService from './_services/bookRequests.service';
 import { formatDate } from '@/services/utils-date';
+import BookRequestStatusChip from './_components/book-request-status-chip';
+import BookRequestTypeChip from './_components/book-request-type-chip';
 
 const BookRequestsClientPage = () => {
     const { t } = useTranslation();
@@ -42,12 +44,14 @@ const BookRequestsClientPage = () => {
             headerName: t('Loại'),
             type: 'text',
             width: 200,
+            renderCell: (params) => <BookRequestTypeChip type={params.row.type} />,
         },
         {
             field: 'status',
             headerName: t('Trạng thái'),
             type: 'text',
             width: 200,
+            renderCell: (params) => <BookRequestStatusChip status={params.row.status} />,
         },
         {
             field: 'updatedAt',
@@ -90,12 +94,14 @@ const BookRequestsClientPage = () => {
                 type: 'text',
                 colSpan: 6,
                 readOnly: true,
+                formatValue: (value) => t(value),
             },
             {
                 name: 'status',
                 label: t('Trạng thái'),
                 type: 'text',
                 colSpan: 6,
+                formatValue: (value) => t(value),
                 readOnly: true,
             },
         

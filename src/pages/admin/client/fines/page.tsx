@@ -41,7 +41,7 @@ const FinesClientPage = () => {
             headerName: t('Số tiền'),
             type: 'text',
             width: 200,
-            renderCell: (params) => <Typography>{params.row.amount} ₫</Typography>
+            renderCell: (params) => <Typography variant='body2'>{params.row.amount} ₫</Typography>
         }
     ], [t]);
 

@@ -1,4 +1,3 @@
-import { Book } from "@mui/icons-material";
 
 export const ALL_PERMISSIONS = {
 

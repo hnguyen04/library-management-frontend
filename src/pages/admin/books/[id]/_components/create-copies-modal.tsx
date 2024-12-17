@@ -39,7 +39,6 @@ const CreateBookCopyModal = NiceModal.create((props: TCreateCopiesModal) => {
                     .required(t('Vui lòng nhập số lượng'))
                     .min(1, t('Số lượng phải lớn hơn 0'))
                     .max(10, t('Số lượng phải nhỏ hơn hoặc bằng 10')),
-                id: yup.string().required(t('Vui lòng nhập ID')),
             }),
         [],
     );
@@ -47,7 +46,6 @@ const CreateBookCopyModal = NiceModal.create((props: TCreateCopiesModal) => {
         mode: 'onChange',
         resolver: schema ? yupResolver(schema) : undefined,
         defaultValues: {
-            id: id,
             number: 1,
         },
     });
@@ -76,6 +74,7 @@ const CreateBookCopyModal = NiceModal.create((props: TCreateCopiesModal) => {
     });
     const onSubmit = useCallback(
         (data: any) => {
+            data.id = id;
             bookCopyMutation.mutate(data);
         },
         [bookCopyMutation],
@@ -107,20 +106,6 @@ const CreateBookCopyModal = NiceModal.create((props: TCreateCopiesModal) => {
                 <FormProvider {...form}>
                     <form onSubmit={handleSubmit(onSubmit)} ref={formRef}>
                         <Grid container spacing={2} sx={{ p: 3 }}>
-                            <Grid xs={6} md={6} item>
-                                <BaseFormInput
-                                    control={control}
-                                    field={{
-                                        required: true,
-                                        name: 'id',
-                                        label: t('ID'),
-                                        type: 'text',
-                                        defaultValue: id,
-                                        readOnly: true,
-                                        colSpan: 6,
-                                    }}
-                                />
-                            </Grid>
                             <Grid xs={6} md={6} item>
                                 <BaseFormInput
                                     control={control}

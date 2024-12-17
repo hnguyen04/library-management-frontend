@@ -12,6 +12,8 @@ import bookCopiesService from "./_services/bookCopies.service";
 import { EBookCopyStatus } from "./_services/bookCopies.model";
 import CreateBookCopyModal from "./_components/create-copies-modal";
 import { formatDate } from "@/services/utils-date";
+import { hashUUIDTo8Char } from "@/services/utils";
+import BookCopyStatusChip from "./_components/copy-status-chip";
 
 
 const BookCopyPage = () => {
@@ -25,7 +27,7 @@ const BookCopyPage = () => {
             headerName: t("ID"),
             type: "text",
             width: 150,
-            // renderCell: (params: any) => `${params.row.bookTitle}_${params.api.getRowIndexRelativeToVisibleRows(params.row.id) + 1}`,
+            renderCell: (params) => hashUUIDTo8Char(params.row.id),
         },
         {
             field: "bookTitle",
@@ -39,6 +41,7 @@ const BookCopyPage = () => {
             headerName: t("Trạng thái"),
             type: "text",
             width: 200,
+            renderCell: (params) => <BookCopyStatusChip status={params.row.status} />,
         },
         {
             field: "createdAt",
@@ -76,6 +79,7 @@ const BookCopyPage = () => {
             label: t("ID"),
             type: "text",
             colSpan: 6,
+            formatValue: (value) => hashUUIDTo8Char(value),
         },
         {
             name: "bookTitle",

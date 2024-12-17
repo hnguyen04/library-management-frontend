@@ -9,4 +9,5 @@ export default interface IBook {
     description: string;
     createdAt: string;
     updatedAt: string;
+    numberOfCopiesAvailable: number;
 }

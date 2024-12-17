@@ -1,6 +1,5 @@
 import BaseCrudPage from "@/base/base-crud-page";
 import { GridColDef } from "@mui/x-data-grid";
-import { useQuery } from "@tanstack/react-query";
 import * as yup from "yup";
 
 import useTranslation from '@/hooks/use-translation';
@@ -35,6 +34,7 @@ const RolePage = () => {
             headerName: t("Tên"),
             type: "text",
             flex: 1,
+            renderCell: (params) => t(params.row.name)
         }
     ], [t]);
 
@@ -72,6 +72,7 @@ const RolePage = () => {
             required: true,
             colSpan: 6,
             readOnly: true,
+            formatValue: (value) => t(value)
         }
     ], [t]);
 
@@ -91,8 +92,6 @@ const RolePage = () => {
             }),
         [t],
     );
-
-
 
 
     return (

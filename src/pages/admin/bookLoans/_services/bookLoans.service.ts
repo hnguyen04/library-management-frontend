@@ -1,5 +1,5 @@
 import { BaseCrudService, TBaseResponse } from "@/base/base-crud-service";
-// import { IPaginatedItems } from "@/base/base.model";
+import { IPaginatedItems } from "@/base/base.model";
 import { httpService } from "@/base/http-service";
 
 
@@ -54,6 +54,18 @@ class BookLoansService extends BaseCrudService {
             data,
         });
         return res.result;
+    }
+
+    public async getAllBooksLoans() {
+        const response = await httpService.request<TBaseResponse<IPaginatedItems<any>>>({
+            url: "/book-loans/GetAll",
+            params: {
+                skipCount: 0,
+                maxResultCount: 1000,
+            },
+            method: "GET"
+        })
+        return response.result;
     }
 }
 

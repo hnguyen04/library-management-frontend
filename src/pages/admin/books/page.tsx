@@ -12,12 +12,20 @@ import booksService from "./_services/books.service";
 import authorsService from "../authors/_services/authors.service";
 import categoryService from "../category/_services/category.service";
 import publishersService from "../publishers/_services/publishers.services";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
+
 
 
 const BookPage = () => {
 
     const { t } = useTranslation();
+    const queryClient = useQueryClient();
+
+    const { data: getAllCategoriesRes } = useQuery({
+        queryKey: ['categories/getAllCategories'],
+        queryFn: () => categoryService.getAllCategories(),
+        staleTime: Infinity,
+    })
 
     const { data: getAllAuthorsRes } = useQuery({
         queryKey: ['authors/getAllAuthors'],
@@ -31,11 +39,7 @@ const BookPage = () => {
         staleTime: Infinity,
     });
 
-    const { data: getAllCategoriesRes } = useQuery({
-        queryKey: ['categories/getAllCategories'],
-        queryFn: () => categoryService.getAllCategories(),
-        staleTime: Infinity,
-    })
+
 
     const authorOptions = useMemo(() => {
         return getAllAuthorsRes?.data?.map((item: any) => ({
@@ -78,13 +82,13 @@ const BookPage = () => {
             headerName: t("Giá"),
             type: "text",
             width: 100,
-            renderCell: (params) => <Typography>{params.row.price} ₫</Typography>
+            renderCell: (params) => <Typography variant="body2">{params.row.price} ₫</Typography>
         },
         {
             field: "publisherName",
             headerName: t("Nhà xuất bản"),
             type: "text",
-            width: 200,
+            width: 150,
         },
         {
             field: "authors",
@@ -105,10 +109,17 @@ const BookPage = () => {
             }
         },
         {
+            field: "numberOfCopiesAvailable",
+            headerName: t('Số lượng sách còn'),
+            type: "number",
+            width: 150,
+            renderCell: (params) => <Typography variant="body2">{params.row.numberOfCopiesAvailable} {t('Bản ghi')}</Typography>
+        },
+        {
             field: "description",
             headerName: t("Mô tả"),
             type: "text",
-            flex: 2,
+            flex: 1,
         }
     ], [t]);
 
@@ -348,6 +359,7 @@ const BookPage = () => {
                         }
                     }
                 ]}
+                onCloseFilter={() => queryClient.invalidateQueries(['categories/getAllCategories'])}
                 
             />
         </>

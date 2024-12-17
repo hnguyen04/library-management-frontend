@@ -1,32 +1,48 @@
-import {
-  ConnectWithoutContactOutlined,
-  GroupsOutlined,
-  QuickreplyOutlined,
-  SummarizeOutlined,
-} from '@mui/icons-material';
-import { Box, Grid } from '@mui/material';
-import { useContext } from 'react';
-import { useQuery } from '@tanstack/react-query';
-
-import useTranslation from '@/hooks/use-translation';
-
-import { AbpContext } from '@/services/abp/abp.context';
-import CardItemRecord from '../_components/card-item-record';
-import ChartFaqs from './_components/chart-faq';
-import ChartFeedbackCitizen from './_components/chart-feedback-citizen';
-import ChartStatisticsCitizen from './_components/chart-statistics-citizen';
-import ChartStatisticsCityVote from './_components/chart-statistics-city-vote';
-import ChartUserStatistics from './_components/chart-user-statistics';
-import reportService from './_services/report.service';
-
-const ReportOverViewPage = () => {
-  const { t } = useTranslation();
- // Use abpState to avoid the unused variable error
+import useTranslation from "@/hooks/use-translation";
+import { Box, Grid, Stack, Typography } from "@mui/material";
+import { styled } from '@mui/material/styles';
+import LibraryStatistics from "./_components/library-statistics";
+import BookLoanStatistics from "./_components/book-loan-statistics";
 
 
-  return (
-    <></>
-  );
-};
+const ReportPage = () => {
+    const { t } = useTranslation();
+    return (
+        <>
+            <StyledMain component="main">
+                <Typography variant="h5" component="h1">
+                    {t('Thống kê thư viện')}
+                </Typography>
 
-export default ReportOverViewPage;
+                <Box sx={{ my: 3 }} />
+                <Box sx={{ flexGrow: 1 }}>
+                    <Grid container spacing={2}>
+                        <LibraryStatistics />
+                    </Grid>
+                </Box>
+                <Box sx={{ my: 3 }} />
+
+                <Typography variant="h5" component="h1">
+                    {t('Thống kê mượn sách')}
+                </Typography>
+
+                <Box sx={{ my: 3 }} />
+                <Box sx={{ flexGrow: 1 }}>
+                    <Grid container spacing={2}>
+                        <BookLoanStatistics />
+                    </Grid>
+                </Box>
+
+            </StyledMain>
+        </>
+    )
+}
+
+const StyledMain = styled(Box)(({ theme }) => ({
+    flex: 1,
+    padding: theme.spacing(2),
+    paddingLeft: theme.spacing(4),
+    paddingRight: theme.spacing(4),
+}));
+
+export default ReportPage;

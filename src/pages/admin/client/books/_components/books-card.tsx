@@ -3,6 +3,7 @@ import {
     Groups3TwoTone as PeopleIcon,
     SortByAlphaTwoTone as TypeIcon,
     Paid as MoneyIcon,
+    Pin as NumberIcon,
 } from '@mui/icons-material';
 import {
     Button,
@@ -77,6 +78,12 @@ export const BookItemCard = (props: TBookItemCardProps) => {
                                 <MoneyIcon fontSize="small" color="primary" />
                                 <Typography variant="body2">
                                     {t('Giá')}: <strong>{item.price || t('Chưa có')} ₫</strong>
+                                </Typography>
+                            </Stack>
+                            <Stack direction="row" alignItems="center" spacing={1}>
+                                <NumberIcon fontSize="small" color="primary" />
+                                <Typography variant="body2">
+                                    {t('Số lượng sách còn')}: <strong>{item.numberOfCopiesAvailable || 0}</strong>
                                 </Typography>
                             </Stack>
 

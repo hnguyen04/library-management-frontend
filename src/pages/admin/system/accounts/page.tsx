@@ -11,6 +11,7 @@ import useTranslation from '@/hooks/use-translation';
 
 import ChangePassModal from './_components/change-pass-modal';
 import accountsService from './_services/accounts.service';
+import { hashUUIDTo8Char } from '@/services/utils';
 
 const SystemAccountsPage = () => {
   const { t } = useTranslation();
@@ -23,7 +24,7 @@ const SystemAccountsPage = () => {
 
   const roleOptions = useMemo(() => {
     return getallRolesRes?.data?.map((item: any) => ({
-      label: item.name,
+      label: t(item.name),
       value: item.id,
     }));
   }, [getallRolesRes]);
@@ -37,7 +38,7 @@ const SystemAccountsPage = () => {
         width: 300,
         flex: 1,
         editable: false,
-        renderCell: (params) => params.row.id,
+        renderCell: (params) => hashUUIDTo8Char(params.row.id),
       },
       {
         field: 'name',
@@ -66,6 +67,7 @@ const SystemAccountsPage = () => {
         headerName: t('Vai trò'),
         width: 200,
         type: 'string',
+        renderCell: (params) => t(params.row.roleName),
         editable: false,
       }
     ],
@@ -169,6 +171,8 @@ const SystemAccountsPage = () => {
         label: t('ID'),
         type: 'text',
         colSpan: 6,
+        readOnly: true,
+        formatValue: (value) => hashUUIDTo8Char(value),
       },
       {
         name: 'name',

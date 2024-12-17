@@ -11,6 +11,7 @@ import useTranslation from '@/hooks/use-translation';
 
 import ChangePassModal from './_components/change-pass-modal';
 import accountsService from './_services/accounts.service';
+import { hashUUIDTo8Char } from '@/services/utils';
 
 const SystemStaffsPage = () => {
   const { t } = useTranslation();
@@ -23,7 +24,7 @@ const SystemStaffsPage = () => {
 
   const roleOptions = useMemo(() => {
     return getallRolesRes?.data?.map((item: any) => ({
-      label: item.name,
+      label: t(item.name),
       value: item.id,
     }));
   }, [getallRolesRes]);
@@ -33,11 +34,10 @@ const SystemStaffsPage = () => {
       {
         headerName: t('ID'),
         field: 'id',
-        type: 'number',
-        width: 300,
-        flex: 1,
+        type: 'text',
+        width: 150,
         editable: false,
-        renderCell: (params) => params.row.id,
+        renderCell: (params) => hashUUIDTo8Char(params.row.id),
       },
       {
         field: 'name',
@@ -45,6 +45,7 @@ const SystemStaffsPage = () => {
         width: 150,
         type: 'string',
         editable: false,
+        flex: 1,
       },
       {
         field: 'userName',
@@ -67,6 +68,7 @@ const SystemStaffsPage = () => {
         width: 200,
         type: 'string',
         editable: false,
+        renderCell: (params) => t(params.row.roleName),
       }
     ],
     [t],
@@ -168,6 +170,8 @@ const SystemStaffsPage = () => {
         label: t('ID'),
         type: 'text',
         colSpan: 6,
+        readOnly: true,
+        formatValue: (value) => hashUUIDTo8Char(value),
       },
       {
         name: 'name',

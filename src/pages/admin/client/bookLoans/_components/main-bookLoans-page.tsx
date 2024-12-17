@@ -18,6 +18,7 @@ import { EBookLoanClientStatus } from "../_services/bookLoans.model";
 import bookLoansClientService from "../_services/bookLoans.service";
 import appService from "@/services/app/app.service";
 import { getErrorMessage, hashUUIDTo8Char } from "@/services/utils";
+import BookLoanStatusChip from "@/pages/admin/bookLoans/_components/bookloan-status-chip";
 
 interface IMainBookLoansPageProps {
     status?: EBookLoanClientStatus;
@@ -124,6 +125,7 @@ const MainBookLoansClientPage = (props: IMainBookLoansPageProps) => {
             headerName: t("Trạng thái"),
             type: "text",
             width: 150,
+            renderCell: (params) => <BookLoanStatusChip status={params.row.status} returnDate={params.row.returnDate} />,
         }
     ], [t, status]);
 
@@ -147,6 +149,7 @@ const MainBookLoansClientPage = (props: IMainBookLoansPageProps) => {
             name: "loanDate",
             label: t("Thời gian mượn"),
             type: "datetime",
+            formatValue: (value) => formatDate(value, 'YYYY-MM-DD HH:mm'),
             colSpan: 6,
             readOnly: true,
         },
@@ -154,6 +157,7 @@ const MainBookLoansClientPage = (props: IMainBookLoansPageProps) => {
             name: "returnDate",
             label: t("Thời gian hết hạn"),
             type: "datetime",
+            formatValue: (value) => formatDate(value, 'YYYY-MM-DD HH:mm'),
             colSpan: 6,
             readOnly: true,
         },
@@ -161,6 +165,7 @@ const MainBookLoansClientPage = (props: IMainBookLoansPageProps) => {
             name: "actualReturnDate",
             label: t("Thời gian trả thực tế"),
             type: "datetime",
+            formatValue: (value) => formatDate(value, 'YYYY-MM-DD HH:mm'),
             colSpan: 6,
             readOnly: true,
             hidden: status !== null && status !== EBookLoanClientStatus.Returned,
@@ -171,6 +176,7 @@ const MainBookLoansClientPage = (props: IMainBookLoansPageProps) => {
             type: "text",
             colSpan: 6,
             readOnly: true,
+            formatValue: (value) => t(value),
         }
     ], [t]);
 

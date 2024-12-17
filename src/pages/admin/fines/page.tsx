@@ -7,6 +7,7 @@ import * as yup from 'yup';
 import finesService from './_services/fines.service';
 import { TCrudFormField } from '@/base/crud-form-field.type';
 import { Typography } from '@mui/material';
+import { hashUUIDTo8Char } from '@/services/utils';
 
 const FinesPage = () => {
     const { t } = useTranslation();
@@ -17,13 +18,14 @@ const FinesPage = () => {
             headerName: t('ID'),
             type: 'text',
             width: 150,
-            flex: 1,
+            renderCell: (params) => hashUUIDTo8Char(params.row.id),
         },
         {
             field: "bookLoanId",
             headerName: t('Mã mượn'),
             type: 'text',
-            width: 200,
+            width: 150,
+            renderCell: (params) => hashUUIDTo8Char(params.row.bookLoanId),
         },
         {
             field: 'userName',
@@ -36,13 +38,14 @@ const FinesPage = () => {
             headerName: t('Tiêu đề'),
             type: 'text',
             width: 200,
+            flex: 1,
         },
         {
             field: 'amount',
             headerName: t('Số tiền'),
             type: 'text',
             width: 200,
-            renderCell: (params) => <Typography>{params.row.amount} ₫</Typography>
+            renderCell: (params) => <Typography variant='body2'>{params.row.amount} ₫</Typography>
         }
     ], [t]);
 

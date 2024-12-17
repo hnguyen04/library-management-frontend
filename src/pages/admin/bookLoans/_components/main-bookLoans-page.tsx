@@ -17,7 +17,8 @@ import { formatDate } from "@/services/utils-date";
 import { EBookLoanStatus } from "../_services/bookLoans.model";
 import bookLoansService from "../_services/bookLoans.service";
 import appService from "@/services/app/app.service";
-import { getErrorMessage } from "@/services/utils";
+import { getErrorMessage, hashUUIDTo8Char } from "@/services/utils";
+import BookLoanStatusChip from "./bookloan-status-chip";
 
 interface IMainBookLoansPageProps {
     status?: EBookLoanStatus;
@@ -141,21 +142,23 @@ const MainBookLoansPage = (props: IMainBookLoansPageProps) => {
         {
             field: "id",
             headerName: t("ID"),
-            type: "number",
+            type: "text",
             width: 150,
-            flex: 1,
+            renderCell: (params) => hashUUIDTo8Char(params.row.id),
         },
         {
             field: "bookCopyId",
             headerName: t("Id bản ghi"),
             type: "text",
             width: 150,
+            renderCell: (params) => hashUUIDTo8Char(params.row.bookCopyId),
         },
         {
             field: "bookTitle",
             headerName: t("Tiêu đề"),
             type: "text",
             width: 300,
+            flex: 1,
         },
         {
             field: "userName",
@@ -190,6 +193,7 @@ const MainBookLoansPage = (props: IMainBookLoansPageProps) => {
             headerName: t("Trạng thái"),
             type: "text",
             width: 150,
+            renderCell: (params) => <BookLoanStatusChip status={params.row.status} returnDate={params.row.returnDate} />,
         }
     ], [t, status]);
 
@@ -213,8 +217,8 @@ const MainBookLoansPage = (props: IMainBookLoansPageProps) => {
             label: t("Thời gian trả thực tế"),
             type: "datetime",
             colSpan: 12,
-            disabled: status !== null && status !== EBookLoanStatus.Returned,
-            hidden: status !== null && status !== EBookLoanStatus.Returned,
+            disabled: status !== null && (status !== EBookLoanStatus.Returned && status !== EBookLoanStatus.Request_Returning),
+            hidden: status !== null && (status !== EBookLoanStatus.Returned && status !== EBookLoanStatus.Request_Returning),
         }
     ], [t]);
 
@@ -224,6 +228,16 @@ const MainBookLoansPage = (props: IMainBookLoansPageProps) => {
             label: t("ID"),
             type: "text",
             colSpan: 6,
+            readOnly: true,
+            formatValue: (value) => hashUUIDTo8Char(value),
+        },
+        {
+            name: "bookCopyId",
+            label: t("Id bản ghi"),
+            type: "text",
+            colSpan: 6,
+            readOnly: true,
+            formatValue: (value) => hashUUIDTo8Char(value),
         },
         {
             name: "bookTitle",
@@ -244,6 +258,7 @@ const MainBookLoansPage = (props: IMainBookLoansPageProps) => {
             label: t("Thời gian mượn"),
             type: "datetime",
             colSpan: 6,
+            formatValue: (value) => formatDate(value, 'DD/MM/YYYY HH:mm'),
             readOnly: true,
         },
         {
@@ -251,6 +266,7 @@ const MainBookLoansPage = (props: IMainBookLoansPageProps) => {
             label: t("Thời gian hết hạn"),
             type: "datetime",
             colSpan: 6,
+            formatValue: (value) => formatDate(value, 'DD/MM/YYYY HH:mm'),
             readOnly: true,
         },
         {
@@ -259,6 +275,7 @@ const MainBookLoansPage = (props: IMainBookLoansPageProps) => {
             type: "datetime",
             colSpan: 6,
             readOnly: true,
+            formatValue: (value) => formatDate(value, 'DD/MM/YYYY HH:mm'),
             hidden: status !== null && status !== EBookLoanStatus.Returned,
         },
         {
@@ -266,6 +283,7 @@ const MainBookLoansPage = (props: IMainBookLoansPageProps) => {
             label: t("Trạng thái"),
             type: "text",
             colSpan: 6,
+            formatValue: (value) => t(value),
             readOnly: true,
         }
     ], [t]);
