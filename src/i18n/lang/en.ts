@@ -412,7 +412,7 @@ export const en = {
   'Id bản ghi': 'Copy ID',
   'Thời gian hết hạn phải sau thời gian mượn': 'Expired time must be after borrowed time',
   'Mã mượn': 'Loan ID',
-  'Quản lý phạt': '',
+  'Quản lý phạt': 'Fine Management',
   'Danh mục sách': 'Book List',
   'Danh mục sách dạng bảng': 'Book List - Table View',
   'Danh mục sách dạng lưới': 'Book List - Grid View',
