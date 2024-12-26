@@ -65,7 +65,7 @@ Dự án được chia thành hai phần chính:
    ```
 4. Chạy ứng dụng:
    ```bash
-   yarn run dev
+   yarn dev
    ```
 Ứng dụng sẽ chạy tại: http://localhost:5173/
 
