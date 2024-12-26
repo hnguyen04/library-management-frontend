@@ -54,7 +54,21 @@ Dự án được chia thành hai phần chính:
    ```bash
    git clone https://github.com/hnguyen04/library-management-frontend.git
    cd library-management-frontend
+
 2. Cài đặt các gói phụ thuộc:
+   ```bash
+   yarn install
+   ```
+3. Tạo file `.env.local` và thêm đường dẫn backend (ví dụ):
+   ```bash
+   VITE_API_ENDPOINT=http://localhost:8080"
+   ```
+4. Chạy ứng dụng:
+   ```bash
+   yarn run dev
+   ```
+Ứng dụng sẽ chạy tại: http://localhost:5173/
+
    ```bash
    yarn install
 3. Chạy ứng dụng:

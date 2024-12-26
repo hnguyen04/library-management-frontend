@@ -63,11 +63,16 @@ class AuthService {
 
   async logout() {
     try {
-      const response = await httpService.request<IBaseHttpResponse<null>>({
-        url: '/auth/Logout',
-        method: 'GET',
-      });
-      return response.success;
+      const token = Cookies.get('accessToken');
+      console.log('token', token);
+      const response = await axios.post<IBaseHttpResponse<null>>(
+        `${API_ENDPOINT}/auth/Logout`,
+        {
+          token: token,
+        }
+      );
+
+      return response.data.result;
     } catch (error) {
       return Promise.reject(error);
     } finally {
