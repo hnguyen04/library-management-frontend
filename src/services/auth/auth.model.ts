@@ -10,11 +10,21 @@ export interface ILoginResult {
 
 export interface IRegisterInput {
   name: string;
-  surname: string;
   userName: string;
   email: string;
   password: string;
   roleId: number;
+}
+
+export interface IRegisterResult {
+  id: string,
+  name: string;
+  userName: string;
+  email: string;
+  createdAt: string;
+  updatedAt: string;
+  roleId: number;
+  roleName: string;
 }
 
 export interface GetUserInfoApiParams {

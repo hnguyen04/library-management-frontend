@@ -48,8 +48,8 @@ const BookLoanStatusChip: React.FC<StatusChipProps> = ({ status, returnDate }) =
             <Chip {...chipProps} />
 
             {/* Chip Quá Hạn nếu có */}
-            {overdue && (
-                <Chip label={t('Quá hạn')} color="error" variant="filled" />
+            {overdue && (status === EBookLoanStatus.Borrowed || status === EBookLoanStatus.Request_Returning || status === EBookLoanStatus.Returned) && (
+            <Chip label={t('Quá hạn')} color="error" variant="filled" />
             )}
         </Stack>
     );

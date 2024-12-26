@@ -458,7 +458,7 @@ export const en = {
   'DENIED': 'Denied',
   'PENDING': 'Pending',
   'ADMIN': 'Admin',
-  'USER': 'User',
+  'USER': 'Reader',
   'STAFF': 'Staff',
   'Số lượng sách còn': 'Remaining Book Quantity',
   'Bản ghi': 'Copies',
@@ -472,4 +472,10 @@ export const en = {
   'Tổng số yêu cầu': 'Total Requests',
   'Tổng số sách mượn trả': 'Total Borrowed Books',
   'Thống kê yêu cầu': 'Request Statistics',
+  'Đã có tài khoản': 'Already have an account',
+  'Họ và tên': 'Full Name',
+  'Nhập lại mật khẩu mới': 'Re-enter password',
+  'Tên người dùng': 'Username',
+  'Đăng ký': 'Register Account',
+
 };

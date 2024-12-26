@@ -23,6 +23,7 @@ import BookClientPage from '@/pages/admin/client/books/page';
 import BookLoansClientPage from '@/pages/admin/client/bookLoans/page';
 import FinesClientPage from '@/pages/admin/client/fines/page';
 import BookRequestsClientPage from '@/pages/admin/client/bookRequests/page';
+import RegisterPage from '@/pages/auth/register.page';
 
 export const router = createBrowserRouter([
   {
@@ -100,7 +101,10 @@ export const router = createBrowserRouter([
   {
     path: 'auth',
     element: <AuthLayout />,
-    children: [{ path: 'login', element: <LoginPage /> }],
+    children: [
+      { path: 'login', element: <LoginPage /> },
+      { path: 'register', element: <RegisterPage /> },
+    ],
   },
   { path: '/404', element: <NotFoundPage /> },
   { path: '*', element: <NotFoundPage /> },

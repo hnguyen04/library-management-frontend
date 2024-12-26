@@ -256,7 +256,7 @@ const MainBookLoansPage = (props: IMainBookLoansPageProps) => {
         {
             name: "loanDate",
             label: t("Thời gian mượn"),
-            type: "datetime",
+            type: "text",
             colSpan: 6,
             formatValue: (value) => formatDate(value, 'DD/MM/YYYY HH:mm'),
             readOnly: true,
@@ -264,7 +264,7 @@ const MainBookLoansPage = (props: IMainBookLoansPageProps) => {
         {
             name: "returnDate",
             label: t("Thời gian hết hạn"),
-            type: "datetime",
+            type: "text",
             colSpan: 6,
             formatValue: (value) => formatDate(value, 'DD/MM/YYYY HH:mm'),
             readOnly: true,
@@ -272,7 +272,7 @@ const MainBookLoansPage = (props: IMainBookLoansPageProps) => {
         {
             name: "actualReturnDate",
             label: t("Thời gian trả thực tế"),
-            type: "datetime",
+            type: "text",
             colSpan: 6,
             readOnly: true,
             formatValue: (value) => formatDate(value, 'DD/MM/YYYY HH:mm'),

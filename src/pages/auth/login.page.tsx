@@ -56,7 +56,7 @@ const LoginPage = () => {
     onError: (err: any) => {
       appService.hideLoadingModal();
       enqueueSnackbar(
-        err.response.data.error?.details || t('Đã có lỗi xảy ra'),
+        err.response.data.message || t('Đã có lỗi xảy ra'),
         {
           variant: 'error',
         },

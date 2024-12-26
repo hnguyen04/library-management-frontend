@@ -9,6 +9,8 @@ import {
   ILoginInput,
   ILoginResult,
   IRefreshTokenResult,
+  IRegisterInput,
+  IRegisterResult,
   IUserInfo,
 } from './auth.model';
 
@@ -74,7 +76,15 @@ class AuthService {
     }
   }
 
+  async register(input: IRegisterInput) {
+    const response = await axios.post<IBaseHttpResponse<IRegisterResult>>(
+      `${API_ENDPOINT}/users/Create`,
+      input,
+    );
+    const data = response.data.result;
 
+    return data;
+  }
 }
 
 const authService = new AuthService();

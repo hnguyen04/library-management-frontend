@@ -1428,6 +1428,7 @@ export const initial = {
   'Tổng số yêu cầu': '',
   'Tổng số sách mượn trả': '',
   'Thống kê yêu cầu': '',
+  'Đã có tài khoản': '',
 };
 
 type TObj = typeof initial;
