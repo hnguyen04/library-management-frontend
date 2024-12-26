@@ -61,11 +61,11 @@ Dự án được chia thành hai phần chính:
    ```
 3. Tạo file `.env.local` và thêm đường dẫn backend (ví dụ):
    ```bash
-   VITE_API_ENDPOINT=http://localhost:8080"
+   VITE_API_ENDPOINT=http://localhost:8080
    ```
 4. Chạy ứng dụng:
    ```bash
-   yarn run dev
+   yarn dev
    ```
 Ứng dụng sẽ chạy tại: http://localhost:5173/
 
