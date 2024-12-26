@@ -65,16 +65,10 @@ Dự án được chia thành hai phần chính:
    ```
 4. Chạy ứng dụng:
    ```bash
-   yarn dev
+   yarn run dev
    ```
 Ứng dụng sẽ chạy tại: http://localhost:5173/
 
-   ```bash
-   yarn install
-3. Chạy ứng dụng:
-   ```bash
-   yarn run dev
-Ứng dụng sẽ chạy tại: http://localhost:5173/
 
 ### Cài đặt Backend:
 1. Clone repository:
